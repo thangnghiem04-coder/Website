@@ -231,6 +231,14 @@ function Index() {
           </div>
         </section>
 
+        <section aria-label="Profile at a glance" className="border-b border-border bg-primary/5">
+          <div className="mx-auto grid max-w-[1440px] gap-px bg-border px-0 md:grid-cols-2 xl:grid-cols-4">
+            {glance.map(([label, value]) => <div key={label} className="bg-background px-5 py-8 md:px-8"><p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">{label}</p><p className="mt-3 text-sm leading-6 text-muted-foreground">{value}</p></div>)}
+          </div>
+          <div className="mx-auto max-w-[1440px] border-t border-border px-5 py-6 md:px-8"><p className="text-sm text-muted-foreground"><span className="font-semibold uppercase tracking-[0.14em] text-foreground">Languages</span> <span className="mx-3 text-border">/</span> English (fluent, professional) · Finnish (intermediate, CEFR B1) · Vietnamese (native)</p></div>
+        </section>
+
+
         <section id="about" className="mx-auto max-w-[1440px] scroll-mt-20 px-5 py-24 md:px-10 md:py-36">
           <div className="grid gap-14 lg:grid-cols-[.8fr_1.6fr]">
             <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">01 / About</p><h2 className="mt-6 font-display text-5xl leading-none md:text-7xl">The Intersection of Capital, Policy, and Governance</h2></div>
