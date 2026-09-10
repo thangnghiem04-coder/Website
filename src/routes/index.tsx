@@ -5,17 +5,52 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/timothy-portfolio-hero.jpg";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
 import travelMapAsset from "@/assets/timothy-travel-map.png.asset.json";
+import cvAsset from "@/assets/timothy-nghiem-cv.pdf.asset.json";
 
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
+const cvUrl = cvAsset.url;
+
+const glance = [
+  ["Education", "Business Administration — Aalto & Tampere University"],
+  ["Academic load", "190 ECTS completed in two years"],
+  ["Core tools", "Advanced Excel · Stata · SPSS · SAP S/4HANA · MS Dynamics 365"],
+  ["Status", "Based in Tampere · Continuous Residence Permit (A), full work rights · Open to hybrid, remote or on-site roles across Finland"],
+];
+
+const roles: { title: string; org: string; place: string; period: string; points: [string, string][] }[] = [
+  {
+    title: "Junior Management — Business & Financial Data Analyst",
+    org: "Greenmore Architecture",
+    place: "Vietnam (Hybrid)",
+    period: "2023 – Present",
+    points: [
+      ["Financial & operational reporting", "Reconcile cross-departmental transactions into monthly budget-vs-actual variance reports for executive leadership."],
+      ["Document & contract analysis", "Review project documents and records to extract the figures and terms that inform management decisions."],
+      ["Finance tracking & modeling", "Maintain structured spreadsheets for ongoing financial analysis, plus automated Power Query workflows and dashboards that cut manual compilation time by 40%."],
+      ["Project research & negotiation support", "Research project information and support the negotiation process with prepared figures and background."],
+      ["Data auditing & compliance", "Run routine audits of project accounting entries and client records across remote and local operations."],
+    ],
+  },
+  {
+    title: "Quantitative Business Researcher & Data Analyst",
+    org: "Capital Infrastructure & Corporate Governance Project",
+    place: "Finland",
+    period: "2024 – 2025",
+    points: [
+      ["Econometric modeling", "Longitudinal dataset analysis in Stata and SPSS to evaluate project execution efficiency and cost allocation."],
+      ["Executive reporting", "Translate quantitative findings into structured summaries and visual charts for multi-stakeholder project reviews."],
+    ],
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "Timothy Nghiem — Finance, Governance & Economics" },
-    { name: "description", content: "Portfolio of Timothy (Thang) Nghiem — economics, finance, strategic governance, and quantitative analysis." },
-    { property: "og:title", content: "Timothy Nghiem — Finance, Governance & Economics" },
-    { property: "og:description", content: "Academic rigor and analytical work across capital, policy, and governance." },
+    { title: "Timothy Nghiem — Business & Financial Data Analyst" },
+    { name: "description", content: "Timothy (Thang) Nghiem — Business Administration graduate in Tampere, Finland. Financial reporting, data analytics, ERP, and governance research. CV and work samples available." },
+    { property: "og:title", content: "Timothy Nghiem — Business & Financial Data Analyst" },
+    { property: "og:description", content: "Business Administration graduate in Tampere, Finland. Financial reporting, data analytics, ERP, and governance research — CV and work samples available." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
@@ -187,13 +222,22 @@ function Index() {
               <h1 className="max-w-5xl font-display text-6xl leading-[0.94] md:text-8xl lg:text-[7.5rem]">Navigating Macro-Dynamics &amp; Strategic Governance.</h1>
               <p className="mt-8 max-w-2xl text-base leading-relaxed text-primary-foreground/75 md:text-lg">Timothy (Thang) Nghiem — Business Administration &amp; Applied Economics Graduate.</p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Button asChild variant="portfolio" size="portfolio" className="bg-background text-foreground hover:bg-background/90"><a href={workUrl} target="_blank" rel="noreferrer">Explore work samples <ArrowUpRight /></a></Button>
+                <Button asChild variant="portfolio" size="portfolio" className="bg-background text-foreground hover:bg-background/90"><a href={cvUrl} download="Timothy-Nghiem-CV.pdf">Download CV <ArrowDownRight /></a></Button>
+                <Button asChild variant="portfolioOutline" size="portfolio" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary"><a href={workUrl} target="_blank" rel="noreferrer">Explore work samples <ArrowUpRight /></a></Button>
                 <Button asChild variant="portfolioOutline" size="portfolio" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary"><a href={transcriptUrl} target="_blank" rel="noreferrer">Academic transcript <ArrowUpRight /></a></Button>
               </div>
               <p className="mt-10 max-w-2xl border-l border-primary-foreground/35 pl-4 text-xs leading-relaxed text-primary-foreground/60">Under Asian cultural naming: Nghiem Duc Thang <span className="mx-2">|</span> Western address: Timothy (or callsign “Cal”).</p>
             </div>
           </div>
         </section>
+
+        <section aria-label="Profile at a glance" className="border-b border-border bg-primary/5">
+          <div className="mx-auto grid max-w-[1440px] gap-px bg-border px-0 md:grid-cols-2 xl:grid-cols-4">
+            {glance.map(([label, value]) => <div key={label} className="bg-background px-5 py-8 md:px-8"><p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">{label}</p><p className="mt-3 text-sm leading-6 text-muted-foreground">{value}</p></div>)}
+          </div>
+          <div className="mx-auto max-w-[1440px] border-t border-border px-5 py-6 md:px-8"><p className="text-sm text-muted-foreground"><span className="font-semibold uppercase tracking-[0.14em] text-foreground">Languages</span> <span className="mx-3 text-border">/</span> English (fluent, professional) · Finnish (intermediate, CEFR B1) · Vietnamese (native)</p></div>
+        </section>
+
 
         <section id="about" className="mx-auto max-w-[1440px] scroll-mt-20 px-5 py-24 md:px-10 md:py-36">
           <div className="grid gap-14 lg:grid-cols-[.8fr_1.6fr]">
@@ -239,13 +283,28 @@ function Index() {
               <figcaption className="border-t border-border px-5 py-4 text-xs uppercase tracking-[0.14em] text-muted-foreground md:px-8">Greenmore Architecture — Hanoi, Vietnam</figcaption>
             </figure>
 
-            <div className="mt-16 border-t border-border">{tools.map((tool, i) => <ToolRow key={tool.name} tool={tool} index={i} expanded={activeTool === i} onToggle={() => setActiveTool(activeTool === i && window.matchMedia("(hover: none)").matches ? null : i)} onEnter={() => setActiveTool(i)} onLeave={() => setActiveTool((current) => current === i ? null : current)}/>)}</div>
+            <h3 className="mt-20 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Professional experience</h3>
+            <div className="mt-8 border-t border-border">
+              {roles.map((role) => <article key={role.title} className="grid gap-8 border-b border-border py-10 md:grid-cols-[.85fr_1.15fr] md:py-14">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">{role.period}</p>
+                  <h4 className="mt-4 font-display text-3xl leading-tight md:text-4xl">{role.title}</h4>
+                  <p className="mt-4 text-sm font-medium text-foreground">{role.org}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{role.place}</p>
+                </div>
+                <ul className="space-y-5">
+                  {role.points.map(([heading, detail]) => <li key={heading} className="flex gap-4"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-accent"/><p className="text-sm leading-7 text-muted-foreground"><span className="font-semibold text-foreground">{heading}:</span> {detail}</p></li>)}
+                </ul>
+              </article>)}
+            </div>
+
+            <h3 className="mt-20 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Tools &amp; systems</h3>
+            <div className="mt-8 border-t border-border">{tools.map((tool, i) => <ToolRow key={tool.name} tool={tool} index={i} expanded={activeTool === i} onToggle={() => setActiveTool(activeTool === i && window.matchMedia("(hover: none)").matches ? null : i)} onEnter={() => setActiveTool(i)} onLeave={() => setActiveTool((current) => current === i ? null : current)}/>)}</div>
           </div>
         </section>
 
         <section id="perspective" className="scroll-mt-20 bg-secondary/45">
-          <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-32"><div className="grid gap-12 lg:grid-cols-2"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">06 / Perspective</p><h2 className="mt-5 font-display text-5xl md:text-7xl">Personal Blog &amp; Essays</h2></div><div className="border-t border-primary pt-7"><p className="font-display text-4xl leading-none text-accent md:text-5xl">Currently under development</p><p className="mt-6 max-w-2xl text-xl leading-relaxed">This portal will serve as an analytical archive for essays on geopolitical risk, quantitative economics, and financial structures.</p><ConstructionScene /></div></div></div>
-
+          <div className="mx-auto max-w-[1440px] px-5 py-14 md:px-10 md:py-20"><div className="grid items-center gap-8 lg:grid-cols-[.85fr_1.15fr]"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">06 / Perspective</p><h2 className="mt-4 font-display text-4xl md:text-5xl">Personal Blog &amp; Essays</h2></div><div className="flex flex-wrap items-center gap-6 border-t border-primary pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0"><div className="max-w-xl"><p className="font-display text-2xl leading-tight text-accent">Currently under development</p><p className="mt-3 text-sm leading-relaxed text-muted-foreground">An upcoming archive of essays on geopolitical risk, quantitative economics, and financial structures.</p></div><div className="w-40 shrink-0 sm:w-48"><ConstructionScene /></div></div></div></div>
         </section>
 
         <section className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-28"><blockquote className="glass-panel mx-auto max-w-5xl p-8 font-display text-2xl italic leading-relaxed md:p-14 md:text-4xl">“Author&apos;s Note: This digital portal was architected and deployed utilizing state-of-the-art AI systems—reflecting my ongoing commitment to leveraging cutting-edge technology, optimizing operational workflows, and mastering next-generation analytical tools.”</blockquote></section>
@@ -253,7 +312,7 @@ function Index() {
 
       <footer id="contact" className="scroll-mt-20 bg-primary text-primary-foreground">
         <div className="relative h-56 overflow-hidden border-b border-primary-foreground/20 md:h-80"><img src={contactBanner} alt="Abstract financial curves crossing an architectural grid" width={1920} height={768} loading="lazy" className="h-full w-full object-cover"/><div className="absolute inset-0 bg-primary/20"/></div>
-        <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-20 md:px-10 md:pt-28"><p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50">07 / Contact</p><div className="mt-7 grid gap-12 lg:grid-cols-[1.5fr_1fr]"><h2 className="font-display text-6xl leading-none md:text-8xl">Let’s discuss the systems behind the numbers.</h2><div className="space-y-4 lg:pt-4"><a href="mailto:thangnghiem04@gmail.com" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Mail className="h-4 w-4"/>thangnghiem04@gmail.com</a><a href="tel:+358466128746" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Phone className="h-4 w-4"/>+358 466 128 746</a><a href="https://www.facebook.com/thang.nghiem.00/" target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Facebook className="h-4 w-4"/>Facebook <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={workUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Portfolio folder <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={transcriptUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Academic transcript <ArrowUpRight className="ml-auto h-4 w-4"/></a></div></div><div className="mt-24 flex flex-col justify-between gap-4 border-t border-primary-foreground/20 pt-7 text-xs text-primary-foreground/45 sm:flex-row"><span>© Timothy (Thang) Nghiem. All rights reserved.</span><span>Based in Finland · Working globally</span></div></div>
+        <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-20 md:px-10 md:pt-28"><p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50">07 / Contact</p><div className="mt-7 grid gap-12 lg:grid-cols-[1.5fr_1fr]"><div><h2 className="font-display text-6xl leading-none md:text-8xl">Let’s discuss the systems behind the numbers.</h2><div className="mt-10 max-w-2xl border-l border-primary-foreground/35 pl-5"><p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">What I’m looking for</p><p className="mt-3 text-base leading-relaxed text-primary-foreground/80">Entry-level and junior roles in business and financial analysis, financial controlling, or data analytics, where reporting, ERP systems, and quantitative work meet real operations.</p><p className="mt-3 text-base leading-relaxed text-primary-foreground/80">Based in Tampere with full work rights in Finland, open to hybrid, remote, or on-site positions nationwide, and available to start immediately.</p></div></div><div className="space-y-4 lg:pt-4"><a href={cvUrl} download="Timothy-Nghiem-CV.pdf" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm font-semibold hover:text-secondary"><ArrowDownRight className="h-4 w-4"/>Download CV (PDF)</a><a href="mailto:thangnghiem04@gmail.com" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Mail className="h-4 w-4"/>thangnghiem04@gmail.com</a><a href="tel:+358466128746" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Phone className="h-4 w-4"/>+358 466 128 746</a><a href="https://www.facebook.com/thang.nghiem.00/" target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Facebook className="h-4 w-4"/>Facebook <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={workUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Portfolio folder <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={transcriptUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Academic transcript <ArrowUpRight className="ml-auto h-4 w-4"/></a></div></div><div className="mt-24 flex flex-col justify-between gap-4 border-t border-primary-foreground/20 pt-7 text-xs text-primary-foreground/45 sm:flex-row"><span>© Timothy (Thang) Nghiem. All rights reserved.</span><span>Based in Finland · Working globally</span></div></div>
       </footer>
     </div>
   );
