@@ -226,8 +226,25 @@ function Index() {
           </div>
         </section>
 
+        <section id="skills" className="section-rule scroll-mt-20 bg-background/60">
+          <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-36">
+            <div className="grid gap-12 lg:grid-cols-[.85fr_1.15fr]">
+              <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">05 / Skills &amp; experience</p><h2 className="mt-5 font-display text-5xl leading-none md:text-7xl">Skills &amp; Experience</h2></div>
+              <div className="lg:pt-6"><p className="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">My practical business and analytical foundation was built at <a href="https://greenmore.vn" target="_blank" rel="noreferrer" className="story-link text-foreground">Greenmore Architecture (greenmore.vn)</a>, a prominent landscape architecture firm in Vietnam. Greenmore is a family business founded and managed by my two uncles, Mr. Toan and Mr. Tuyen. Working within this family venture gave me unique hands-on opportunities and early trust to apply my quantitative analysis, ERP systems knowledge, financial modeling, and digital media skills directly to real-world corporate operations.</p></div>
+            </div>
+
+            <figure className="glass-panel mt-14 overflow-hidden rounded-xl">
+              <iframe src="https://maps.google.com/maps?q=20.9953446,105.8273894&z=15&output=embed" title="Map showing the location of Greenmore Architecture in Hanoi, Vietnam" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-[280px] w-full border-0 md:h-[420px]" />
+              <figcaption className="border-t border-border px-5 py-4 text-xs uppercase tracking-[0.14em] text-muted-foreground md:px-8">Greenmore Architecture — Hanoi, Vietnam</figcaption>
+            </figure>
+
+            <div className="mt-16 border-t border-border">{tools.map((tool, i) => <ToolRow key={tool.name} tool={tool} index={i} expanded={activeTool === i} onToggle={() => setActiveTool(activeTool === i && window.matchMedia("(hover: none)").matches ? null : i)} onEnter={() => setActiveTool(i)} onLeave={() => setActiveTool((current) => current === i ? null : current)}/>)}</div>
+          </div>
+        </section>
+
         <section id="perspective" className="scroll-mt-20 bg-secondary/45">
-          <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-32"><div className="grid gap-12 lg:grid-cols-2"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">05 / Perspective</p><h2 className="mt-5 font-display text-5xl md:text-7xl">Personal Blog &amp; Essays</h2></div><div className="border-t border-primary pt-7"><p className="font-display text-4xl leading-none text-accent md:text-5xl">Currently under development</p><p className="mt-6 max-w-2xl text-xl leading-relaxed">This portal will serve as an analytical archive for essays on geopolitical risk, quantitative economics, and financial structures.</p><ConstructionScene /></div></div></div>
+          <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-32"><div className="grid gap-12 lg:grid-cols-2"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">06 / Perspective</p><h2 className="mt-5 font-display text-5xl md:text-7xl">Personal Blog &amp; Essays</h2></div><div className="border-t border-primary pt-7"><p className="font-display text-4xl leading-none text-accent md:text-5xl">Currently under development</p><p className="mt-6 max-w-2xl text-xl leading-relaxed">This portal will serve as an analytical archive for essays on geopolitical risk, quantitative economics, and financial structures.</p><ConstructionScene /></div></div></div>
+
         </section>
 
         <section className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-28"><blockquote className="glass-panel mx-auto max-w-5xl p-8 font-display text-2xl italic leading-relaxed md:p-14 md:text-4xl">“Author&apos;s Note: This digital portal was architected and deployed utilizing state-of-the-art AI systems—reflecting my ongoing commitment to leveraging cutting-edge technology, optimizing operational workflows, and mastering next-generation analytical tools.”</blockquote></section>
