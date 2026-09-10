@@ -22,7 +22,65 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Perspective", "perspective"], ["Contact", "contact"]];
+const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Skills", "skills"], ["Perspective", "perspective"], ["Contact", "contact"]];
+
+const tools: { name: string; note: string; points: string[] }[] = [
+  {
+    name: "Stata",
+    note: "Econometrics & Data Analysis",
+    points: [
+      "Regression & causal inference: linear models (OLS), binary choice models (Probit/Logit), and instrumental variables (ivregress) to address endogeneity and omitted variable bias.",
+      "Panel data & time-series: Fixed and Random Effects models (xtreg) with Hausman testing, unit root tests, and time-series modeling (ARIMA, VAR).",
+      "Diagnostics & reproducibility: specification tests (heteroskedasticity, autocorrelation, VIF), cluster-robust standard errors, and reproducible Do-files with automated export tables (esttab).",
+    ],
+  },
+  {
+    name: "SPSS",
+    note: "Statistical Testing & Modeling",
+    points: [
+      "Statistical analysis: parametric and non-parametric tests, including t-tests, ANOVA, Mann-Whitney U, and Chi-square tests.",
+      "Predictive modeling: multiple linear, binary logistic, and ordinal regressions to identify trends and driver variables.",
+      "Data management: data coding, recoding variables, managing missing data, and syntax scripts to automate routine data processing.",
+    ],
+  },
+  {
+    name: "Microsoft Excel",
+    note: "Financial Modeling & Reporting",
+    points: [
+      "Advanced formulas & functions: dynamic lookup functions (XLOOKUP, INDEX/MATCH), logical functions (nested IF), and data manipulation.",
+      "Data analysis & modeling: complex PivotTables, PivotCharts, scenario analysis (Goal Seek), dynamic data validation, and interactive dashboards.",
+      "Business analytics: organizing unstructured business data into clean financial and operational reports.",
+    ],
+  },
+  {
+    name: "Canva",
+    note: "Visual Identity & Digital Media",
+    points: [
+      "Visual content & marketing: brand assets, presentations, brochures, and promotional graphics aligned with visual identity guidelines.",
+      "Brand systems: Brand Kits (custom palettes, typography, logos) to maintain design consistency across assets.",
+      "Digital assets: dynamic elements, data charts, and export formats tailored for print and online media.",
+    ],
+  },
+  {
+    name: "SAP S/4HANA",
+    note: "Enterprise Resource Planning",
+    points: [
+      "Enterprise ERP navigation: SAP Fiori launchpad and GUI to execute core business transactions across finance and operations modules.",
+      "Process execution: tracking purchase requisitions, orders, invoices, and reviewing financial ledger entries.",
+      "Reporting & data reconciliation: SAP built-in analytics, operational reports, and exporting system data for external analysis.",
+    ],
+  },
+  {
+    name: "Microsoft 365",
+    note: "Collaboration & Workflow",
+    points: [
+      "Collaborative ecosystem: Teams, SharePoint, and OneDrive for cross-functional file sharing, co-authoring, and version control.",
+      "Documentation & decks: structured, professional documents in Word and impactful presentation slide decks in PowerPoint.",
+      "Workflow productivity: basic Power Automate flows and Planner/Lists to streamline everyday operational tasks.",
+    ],
+  },
+];
+
 
 const capabilities = [
   ["01", "Quantitative Statistics & Econometrics", "Correlation matrix analysis, data scrubbing & filtering, multivariate regression modeling, and panel data analysis using Stata & SPSS."],
@@ -47,12 +105,47 @@ function AnalyticalGraphic({ index }: { index: number }) {
 }
 
 function ConstructionScene() {
-  return <div className="construction-scene" role="img" aria-label="Animated construction crane building the forthcoming essay archive">
-    <div className="construction-crane"><span className="construction-mast"/><span className="construction-jib"/><span className="construction-cable"><span className="construction-hook"/></span></div>
-    <div className="construction-building"><span/><span/><span/><span/><span/><span/></div>
-    <div className="construction-ground"/>
+  return <div className="excavator-scene" role="img" aria-label="Animated excavator digging the foundations of the forthcoming essay archive">
+    <svg viewBox="0 0 320 150" className="excavator-svg" aria-hidden="true">
+      <g className="excavator-dust"><circle cx="72" cy="122" r="4"/><circle cx="88" cy="118" r="3"/><circle cx="58" cy="118" r="2.5"/></g>
+      <path d="M8 128h96l14 14h60l14-14h120" className="excavator-terrain"/>
+      <g className="excavator-body">
+        <rect x="196" y="106" width="86" height="16" rx="8" className="excavator-track"/>
+        <circle cx="210" cy="114" r="5" className="excavator-wheel"/><circle cx="240" cy="114" r="5" className="excavator-wheel"/><circle cx="270" cy="114" r="5" className="excavator-wheel"/>
+        <rect x="210" y="98" width="62" height="8" className="excavator-frame"/>
+        <path d="M222 98V72h34v26M222 78h34" className="excavator-cab"/>
+        <g className="excavator-arm">
+          <path d="M224 88L168 62" className="excavator-boom"/>
+          <path d="M168 62L128 100" className="excavator-stick"/>
+          <g className="excavator-bucket"><path d="M128 100l-16 6 6 16 22-8z"/></g>
+        </g>
+      </g>
+    </svg>
   </div>;
 }
+
+function ToolRow({ tool, index, expanded, onToggle, onEnter, onLeave }: { tool: { name: string; note: string; points: string[] }; index: number; expanded: boolean; onToggle: () => void; onEnter: () => void; onLeave: () => void }) {
+  return <div className="border-b border-border transition-colors hover:bg-card focus-within:bg-card" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+    <Button type="button" variant="ghost" onClick={onToggle} onFocus={onEnter} aria-expanded={expanded} aria-controls={`tool-panel-${index}`} className="h-auto w-full justify-start rounded-none px-5 py-6 text-left text-foreground hover:bg-transparent hover:text-foreground md:px-8">
+      <span className="flex w-full items-center gap-4 whitespace-normal md:gap-8">
+        <span className="text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
+        <span className="flex flex-1 flex-col gap-1 md:flex-row md:items-baseline md:gap-5">
+          <span className="font-display text-2xl font-normal leading-tight md:text-3xl">{tool.name}</span>
+          <span className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{tool.note}</span>
+        </span>
+        <ChevronDown className={`h-5 w-5 shrink-0 text-accent transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}/>
+      </span>
+    </Button>
+    <div id={`tool-panel-${index}`} className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+      <div className="overflow-hidden">
+        <ul className="space-y-4 border-t border-border px-5 pb-8 pt-6 md:px-8">
+          {tool.points.map((point) => <li key={point} className="flex gap-4 text-sm leading-7 text-muted-foreground"><span className="mt-3 h-1.5 w-1.5 shrink-0 bg-accent"/><span>{point}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </div>;
+}
+
 
 function CapabilityCard({ item, index, expanded, onToggle, onEnter, onLeave }: { item: string[]; index: number; expanded: boolean; onToggle: () => void; onEnter: () => void; onLeave: () => void }) {
   const [num, title, description] = item;
@@ -72,6 +165,7 @@ function CapabilityCard({ item, index, expanded, onToggle, onEnter, onLeave }: {
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCapability, setActiveCapability] = useState<number | null>(null);
+  const [activeTool, setActiveTool] = useState<number | null>(null);
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
@@ -133,8 +227,25 @@ function Index() {
           </div>
         </section>
 
+        <section id="skills" className="section-rule scroll-mt-20 bg-background/60">
+          <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-36">
+            <div className="grid gap-12 lg:grid-cols-[.85fr_1.15fr]">
+              <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">05 / Skills &amp; experience</p><h2 className="mt-5 font-display text-5xl leading-none md:text-7xl">Skills &amp; Experience</h2></div>
+              <div className="lg:pt-6"><p className="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">My practical business and analytical foundation was built at <a href="https://greenmore.vn" target="_blank" rel="noreferrer" className="story-link text-foreground">Greenmore Architecture (greenmore.vn)</a>, a prominent landscape architecture firm in Vietnam. Greenmore is a family business founded and managed by my two uncles, Mr. Toan and Mr. Tuyen. Working within this family venture gave me unique hands-on opportunities and early trust to apply my quantitative analysis, ERP systems knowledge, financial modeling, and digital media skills directly to real-world corporate operations.</p></div>
+            </div>
+
+            <figure className="glass-panel mt-14 overflow-hidden rounded-xl">
+              <iframe src="https://maps.google.com/maps?q=20.9953446,105.8273894&z=15&output=embed" title="Map showing the location of Greenmore Architecture in Hanoi, Vietnam" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-[280px] w-full border-0 md:h-[420px]" />
+              <figcaption className="border-t border-border px-5 py-4 text-xs uppercase tracking-[0.14em] text-muted-foreground md:px-8">Greenmore Architecture — Hanoi, Vietnam</figcaption>
+            </figure>
+
+            <div className="mt-16 border-t border-border">{tools.map((tool, i) => <ToolRow key={tool.name} tool={tool} index={i} expanded={activeTool === i} onToggle={() => setActiveTool(activeTool === i && window.matchMedia("(hover: none)").matches ? null : i)} onEnter={() => setActiveTool(i)} onLeave={() => setActiveTool((current) => current === i ? null : current)}/>)}</div>
+          </div>
+        </section>
+
         <section id="perspective" className="scroll-mt-20 bg-secondary/45">
-          <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-32"><div className="grid gap-12 lg:grid-cols-2"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">05 / Perspective</p><h2 className="mt-5 font-display text-5xl md:text-7xl">Personal Blog &amp; Essays</h2></div><div className="border-t border-primary pt-7"><p className="font-display text-4xl leading-none text-accent md:text-5xl">Currently under development</p><p className="mt-6 max-w-2xl text-xl leading-relaxed">This portal will serve as an analytical archive for essays on geopolitical risk, quantitative economics, and financial structures.</p><ConstructionScene /></div></div></div>
+          <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-32"><div className="grid gap-12 lg:grid-cols-2"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">06 / Perspective</p><h2 className="mt-5 font-display text-5xl md:text-7xl">Personal Blog &amp; Essays</h2></div><div className="border-t border-primary pt-7"><p className="font-display text-4xl leading-none text-accent md:text-5xl">Currently under development</p><p className="mt-6 max-w-2xl text-xl leading-relaxed">This portal will serve as an analytical archive for essays on geopolitical risk, quantitative economics, and financial structures.</p><ConstructionScene /></div></div></div>
+
         </section>
 
         <section className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-28"><blockquote className="glass-panel mx-auto max-w-5xl p-8 font-display text-2xl italic leading-relaxed md:p-14 md:text-4xl">“Author&apos;s Note: This digital portal was architected and deployed utilizing state-of-the-art AI systems—reflecting my ongoing commitment to leveraging cutting-edge technology, optimizing operational workflows, and mastering next-generation analytical tools.”</blockquote></section>
@@ -142,7 +253,7 @@ function Index() {
 
       <footer id="contact" className="scroll-mt-20 bg-primary text-primary-foreground">
         <div className="relative h-56 overflow-hidden border-b border-primary-foreground/20 md:h-80"><img src={contactBanner} alt="Abstract financial curves crossing an architectural grid" width={1920} height={768} loading="lazy" className="h-full w-full object-cover"/><div className="absolute inset-0 bg-primary/20"/></div>
-        <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-20 md:px-10 md:pt-28"><p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50">06 / Contact</p><div className="mt-7 grid gap-12 lg:grid-cols-[1.5fr_1fr]"><h2 className="font-display text-6xl leading-none md:text-8xl">Let’s discuss the systems behind the numbers.</h2><div className="space-y-4 lg:pt-4"><a href="mailto:thangnghiem04@gmail.com" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Mail className="h-4 w-4"/>thangnghiem04@gmail.com</a><a href="tel:+358466128746" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Phone className="h-4 w-4"/>+358 466 128 746</a><a href="https://www.facebook.com/thang.nghiem.00/" target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Facebook className="h-4 w-4"/>Facebook <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={workUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Portfolio folder <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={transcriptUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Academic transcript <ArrowUpRight className="ml-auto h-4 w-4"/></a></div></div><div className="mt-24 flex flex-col justify-between gap-4 border-t border-primary-foreground/20 pt-7 text-xs text-primary-foreground/45 sm:flex-row"><span>© Timothy (Thang) Nghiem. All rights reserved.</span><span>Based in Finland · Working globally</span></div></div>
+        <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-20 md:px-10 md:pt-28"><p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50">07 / Contact</p><div className="mt-7 grid gap-12 lg:grid-cols-[1.5fr_1fr]"><h2 className="font-display text-6xl leading-none md:text-8xl">Let’s discuss the systems behind the numbers.</h2><div className="space-y-4 lg:pt-4"><a href="mailto:thangnghiem04@gmail.com" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Mail className="h-4 w-4"/>thangnghiem04@gmail.com</a><a href="tel:+358466128746" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Phone className="h-4 w-4"/>+358 466 128 746</a><a href="https://www.facebook.com/thang.nghiem.00/" target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Facebook className="h-4 w-4"/>Facebook <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={workUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Portfolio folder <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={transcriptUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Academic transcript <ArrowUpRight className="ml-auto h-4 w-4"/></a></div></div><div className="mt-24 flex flex-col justify-between gap-4 border-t border-primary-foreground/20 pt-7 text-xs text-primary-foreground/45 sm:flex-row"><span>© Timothy (Thang) Nghiem. All rights reserved.</span><span>Based in Finland · Working globally</span></div></div>
       </footer>
     </div>
   );
