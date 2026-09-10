@@ -76,7 +76,7 @@ function Index() {
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-10">
-          <a href="#top" className="flex items-baseline gap-3" aria-label="Timothy Nghiem business portfolio home"><span className="font-display text-2xl tracking-[0.08em]">T. NGHIEM</span><span className="hidden border-l border-border pl-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground sm:inline">Business portfolio</span></a>
+          <a href="#top" className="flex items-baseline gap-2 sm:gap-3" aria-label="Timothy Nghiem business portfolio home"><span className="font-display text-xl tracking-[0.08em] sm:text-2xl">T. NGHIEM</span><span className="border-l border-border pl-2 text-[8px] font-semibold uppercase tracking-[0.12em] text-muted-foreground sm:pl-3 sm:text-[10px] sm:tracking-[0.16em]">Business portfolio</span></a>
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">{nav.map(([label, id]) => <a key={id} href={`#${id}`} className="text-xs uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-foreground">{label}</a>)}</nav>
           <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X /> : <Menu />}</Button>
         </div>

@@ -13,4 +13,4 @@
 - [x] Replace the About map with the newly supplied map.
 - [x] Remove the Strategic & Military Doctrine capability card.
 - [x] Add a construction animation and emphasize “Currently under development” in section 5.
-- [ ] Verify the updated desktop and mobile presentation.
+- [x] Verify the updated desktop and mobile presentation.
