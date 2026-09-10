@@ -105,12 +105,47 @@ function AnalyticalGraphic({ index }: { index: number }) {
 }
 
 function ConstructionScene() {
-  return <div className="construction-scene" role="img" aria-label="Animated construction crane building the forthcoming essay archive">
-    <div className="construction-crane"><span className="construction-mast"/><span className="construction-jib"/><span className="construction-cable"><span className="construction-hook"/></span></div>
-    <div className="construction-building"><span/><span/><span/><span/><span/><span/></div>
-    <div className="construction-ground"/>
+  return <div className="excavator-scene" role="img" aria-label="Animated excavator digging the foundations of the forthcoming essay archive">
+    <svg viewBox="0 0 320 150" className="excavator-svg" aria-hidden="true">
+      <g className="excavator-dust"><circle cx="72" cy="122" r="4"/><circle cx="88" cy="118" r="3"/><circle cx="58" cy="118" r="2.5"/></g>
+      <path d="M8 128h96l14 14h60l14-14h120" className="excavator-terrain"/>
+      <g className="excavator-body">
+        <rect x="196" y="106" width="86" height="16" rx="8" className="excavator-track"/>
+        <circle cx="210" cy="114" r="5" className="excavator-wheel"/><circle cx="240" cy="114" r="5" className="excavator-wheel"/><circle cx="270" cy="114" r="5" className="excavator-wheel"/>
+        <rect x="210" y="98" width="62" height="8" className="excavator-frame"/>
+        <path d="M222 98V72h34v26M222 78h34" className="excavator-cab"/>
+        <g className="excavator-arm">
+          <path d="M224 88L168 62" className="excavator-boom"/>
+          <path d="M168 62L128 100" className="excavator-stick"/>
+          <g className="excavator-bucket"><path d="M128 100l-16 6 6 16 22-8z"/></g>
+        </g>
+      </g>
+    </svg>
   </div>;
 }
+
+function ToolRow({ tool, index, expanded, onToggle, onEnter, onLeave }: { tool: { name: string; note: string; points: string[] }; index: number; expanded: boolean; onToggle: () => void; onEnter: () => void; onLeave: () => void }) {
+  return <div className="border-b border-border transition-colors hover:bg-card focus-within:bg-card" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+    <Button type="button" variant="ghost" onClick={onToggle} onFocus={onEnter} aria-expanded={expanded} aria-controls={`tool-panel-${index}`} className="h-auto w-full justify-start rounded-none px-5 py-6 text-left text-foreground hover:bg-transparent hover:text-foreground md:px-8">
+      <span className="flex w-full items-center gap-4 whitespace-normal md:gap-8">
+        <span className="text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
+        <span className="flex flex-1 flex-col gap-1 md:flex-row md:items-baseline md:gap-5">
+          <span className="font-display text-2xl font-normal leading-tight md:text-3xl">{tool.name}</span>
+          <span className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{tool.note}</span>
+        </span>
+        <ChevronDown className={`h-5 w-5 shrink-0 text-accent transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}/>
+      </span>
+    </Button>
+    <div id={`tool-panel-${index}`} className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+      <div className="overflow-hidden">
+        <ul className="space-y-4 border-t border-border px-5 pb-8 pt-6 md:px-8">
+          {tool.points.map((point) => <li key={point} className="flex gap-4 text-sm leading-7 text-muted-foreground"><span className="mt-3 h-1.5 w-1.5 shrink-0 bg-accent"/><span>{point}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </div>;
+}
+
 
 function CapabilityCard({ item, index, expanded, onToggle, onEnter, onLeave }: { item: string[]; index: number; expanded: boolean; onToggle: () => void; onEnter: () => void; onLeave: () => void }) {
   const [num, title, description] = item;
