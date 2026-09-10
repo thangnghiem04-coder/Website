@@ -5,17 +5,52 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/timothy-portfolio-hero.jpg";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
 import travelMapAsset from "@/assets/timothy-travel-map.png.asset.json";
+import cvAsset from "@/assets/timothy-nghiem-cv.pdf.asset.json";
 
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
+const cvUrl = cvAsset.url;
+
+const glance = [
+  ["Education", "Business Administration — Aalto & Tampere University"],
+  ["Academic load", "190 ECTS completed in two years"],
+  ["Core tools", "Advanced Excel · Stata · SPSS · SAP S/4HANA · MS Dynamics 365"],
+  ["Status", "Based in Tampere · Continuous Residence Permit (A), full work rights · Open to hybrid, remote or on-site roles across Finland"],
+];
+
+const roles: { title: string; org: string; place: string; period: string; points: [string, string][] }[] = [
+  {
+    title: "Junior Management — Business & Financial Data Analyst",
+    org: "Greenmore Architecture",
+    place: "Vietnam (Hybrid)",
+    period: "2023 – Present",
+    points: [
+      ["Financial & operational reporting", "Reconcile cross-departmental transactions into monthly budget-vs-actual variance reports for executive leadership."],
+      ["Document & contract analysis", "Review project documents and records to extract the figures and terms that inform management decisions."],
+      ["Finance tracking & modeling", "Maintain structured spreadsheets for ongoing financial analysis, plus automated Power Query workflows and dashboards that cut manual compilation time by 40%."],
+      ["Project research & negotiation support", "Research project information and support the negotiation process with prepared figures and background."],
+      ["Data auditing & compliance", "Run routine audits of project accounting entries and client records across remote and local operations."],
+    ],
+  },
+  {
+    title: "Quantitative Business Researcher & Data Analyst",
+    org: "Capital Infrastructure & Corporate Governance Project",
+    place: "Finland",
+    period: "2024 – 2025",
+    points: [
+      ["Econometric modeling", "Longitudinal dataset analysis in Stata and SPSS to evaluate project execution efficiency and cost allocation."],
+      ["Executive reporting", "Translate quantitative findings into structured summaries and visual charts for multi-stakeholder project reviews."],
+    ],
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "Timothy Nghiem — Finance, Governance & Economics" },
-    { name: "description", content: "Portfolio of Timothy (Thang) Nghiem — economics, finance, strategic governance, and quantitative analysis." },
-    { property: "og:title", content: "Timothy Nghiem — Finance, Governance & Economics" },
-    { property: "og:description", content: "Academic rigor and analytical work across capital, policy, and governance." },
+    { title: "Timothy Nghiem — Business & Financial Data Analyst" },
+    { name: "description", content: "Timothy (Thang) Nghiem — Business Administration graduate in Tampere, Finland. Financial reporting, data analytics, ERP, and governance research. CV and work samples available." },
+    { property: "og:title", content: "Timothy Nghiem — Business & Financial Data Analyst" },
+    { property: "og:description", content: "Business Administration graduate in Tampere, Finland. Financial reporting, data analytics, ERP, and governance research — CV and work samples available." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
