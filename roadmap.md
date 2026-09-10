@@ -14,3 +14,5 @@
 - [x] Remove the Strategic & Military Doctrine capability card.
 - [x] Add a construction animation and emphasize “Currently under development” in section 5.
 - [x] Verify the updated desktop and mobile presentation.
+- [x] Add the Skills & Work Experience section with Greenmore intro, map, and tool accordions.
+- [x] Replace the perspective construction animation with a working excavator.
