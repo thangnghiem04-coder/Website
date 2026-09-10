@@ -8,9 +8,9 @@
 - [x] Add university marks and the Bachelor’s Thesis feature.
 - [x] Update opening language and enlarge capability symbols.
 - [x] Verify the refreshed content on desktop and mobile.
-- [ ] Remove both university logos from Academic Rigor.
-- [ ] Add “Business portfolio” to the header.
-- [ ] Replace the About map with the newly supplied map.
-- [ ] Remove the Strategic & Military Doctrine capability card.
-- [ ] Add a construction animation and emphasize “Currently under development” in section 5.
+- [x] Remove both university logos from Academic Rigor.
+- [x] Add “Business portfolio” to the header.
+- [x] Replace the About map with the newly supplied map.
+- [x] Remove the Strategic & Military Doctrine capability card.
+- [x] Add a construction animation and emphasize “Currently under development” in section 5.
 - [ ] Verify the updated desktop and mobile presentation.
