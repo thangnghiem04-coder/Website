@@ -283,7 +283,23 @@ function Index() {
               <figcaption className="border-t border-border px-5 py-4 text-xs uppercase tracking-[0.14em] text-muted-foreground md:px-8">Greenmore Architecture — Hanoi, Vietnam</figcaption>
             </figure>
 
-            <div className="mt-16 border-t border-border">{tools.map((tool, i) => <ToolRow key={tool.name} tool={tool} index={i} expanded={activeTool === i} onToggle={() => setActiveTool(activeTool === i && window.matchMedia("(hover: none)").matches ? null : i)} onEnter={() => setActiveTool(i)} onLeave={() => setActiveTool((current) => current === i ? null : current)}/>)}</div>
+            <h3 className="mt-20 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Professional experience</h3>
+            <div className="mt-8 border-t border-border">
+              {roles.map((role) => <article key={role.title} className="grid gap-8 border-b border-border py-10 md:grid-cols-[.85fr_1.15fr] md:py-14">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">{role.period}</p>
+                  <h4 className="mt-4 font-display text-3xl leading-tight md:text-4xl">{role.title}</h4>
+                  <p className="mt-4 text-sm font-medium text-foreground">{role.org}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{role.place}</p>
+                </div>
+                <ul className="space-y-5">
+                  {role.points.map(([heading, detail]) => <li key={heading} className="flex gap-4"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-accent"/><p className="text-sm leading-7 text-muted-foreground"><span className="font-semibold text-foreground">{heading}:</span> {detail}</p></li>)}
+                </ul>
+              </article>)}
+            </div>
+
+            <h3 className="mt-20 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Tools &amp; systems</h3>
+            <div className="mt-8 border-t border-border">{tools.map((tool, i) => <ToolRow key={tool.name} tool={tool} index={i} expanded={activeTool === i} onToggle={() => setActiveTool(activeTool === i && window.matchMedia("(hover: none)").matches ? null : i)} onEnter={() => setActiveTool(i)} onLeave={() => setActiveTool((current) => current === i ? null : current)}/>)}</div>
           </div>
         </section>
 
