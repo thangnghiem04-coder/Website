@@ -4,7 +4,7 @@ import { ArrowDownRight, ArrowUpRight, BookOpen, ChevronDown, Facebook, Mail, Me
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/timothy-portfolio-hero.jpg";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
-import travelMapAsset from "@/assets/timothy-travel-map.png.asset.json";
+import travelMapAsset from "@/assets/timothy-travel-map.jpg.asset.json";
 import cvAsset from "@/assets/timothy-nghiem-cv.pdf.asset.json";
 
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
