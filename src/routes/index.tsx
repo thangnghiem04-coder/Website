@@ -165,6 +165,7 @@ function CapabilityCard({ item, index, expanded, onToggle, onEnter, onLeave }: {
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCapability, setActiveCapability] = useState<number | null>(null);
+  const [activeTool, setActiveTool] = useState<number | null>(null);
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
