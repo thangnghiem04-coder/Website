@@ -16,3 +16,11 @@
 - [x] Verify the updated desktop and mobile presentation.
 - [x] Add the Skills & Work Experience section with Greenmore intro, map, and tool accordions.
 - [x] Replace the perspective construction animation with a working excavator.
+
+## Job & networking upgrade (done)
+- At-a-glance strip + languages line
+- CV download in hero and contact
+- Greenmore + Finland research roles as formal experience entries
+- "What I am looking for" in contact
+- Perspective/blog section scaled down
+- Sharpened page title and description (no og:image; hosting supplies preview)
