@@ -22,7 +22,65 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Perspective", "perspective"], ["Contact", "contact"]];
+const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Skills", "skills"], ["Perspective", "perspective"], ["Contact", "contact"]];
+
+const tools: { name: string; note: string; points: string[] }[] = [
+  {
+    name: "Stata",
+    note: "Econometrics & Data Analysis",
+    points: [
+      "Regression & causal inference: linear models (OLS), binary choice models (Probit/Logit), and instrumental variables (ivregress) to address endogeneity and omitted variable bias.",
+      "Panel data & time-series: Fixed and Random Effects models (xtreg) with Hausman testing, unit root tests, and time-series modeling (ARIMA, VAR).",
+      "Diagnostics & reproducibility: specification tests (heteroskedasticity, autocorrelation, VIF), cluster-robust standard errors, and reproducible Do-files with automated export tables (esttab).",
+    ],
+  },
+  {
+    name: "SPSS",
+    note: "Statistical Testing & Modeling",
+    points: [
+      "Statistical analysis: parametric and non-parametric tests, including t-tests, ANOVA, Mann-Whitney U, and Chi-square tests.",
+      "Predictive modeling: multiple linear, binary logistic, and ordinal regressions to identify trends and driver variables.",
+      "Data management: data coding, recoding variables, managing missing data, and syntax scripts to automate routine data processing.",
+    ],
+  },
+  {
+    name: "Microsoft Excel",
+    note: "Financial Modeling & Reporting",
+    points: [
+      "Advanced formulas & functions: dynamic lookup functions (XLOOKUP, INDEX/MATCH), logical functions (nested IF), and data manipulation.",
+      "Data analysis & modeling: complex PivotTables, PivotCharts, scenario analysis (Goal Seek), dynamic data validation, and interactive dashboards.",
+      "Business analytics: organizing unstructured business data into clean financial and operational reports.",
+    ],
+  },
+  {
+    name: "Canva",
+    note: "Visual Identity & Digital Media",
+    points: [
+      "Visual content & marketing: brand assets, presentations, brochures, and promotional graphics aligned with visual identity guidelines.",
+      "Brand systems: Brand Kits (custom palettes, typography, logos) to maintain design consistency across assets.",
+      "Digital assets: dynamic elements, data charts, and export formats tailored for print and online media.",
+    ],
+  },
+  {
+    name: "SAP S/4HANA",
+    note: "Enterprise Resource Planning",
+    points: [
+      "Enterprise ERP navigation: SAP Fiori launchpad and GUI to execute core business transactions across finance and operations modules.",
+      "Process execution: tracking purchase requisitions, orders, invoices, and reviewing financial ledger entries.",
+      "Reporting & data reconciliation: SAP built-in analytics, operational reports, and exporting system data for external analysis.",
+    ],
+  },
+  {
+    name: "Microsoft 365",
+    note: "Collaboration & Workflow",
+    points: [
+      "Collaborative ecosystem: Teams, SharePoint, and OneDrive for cross-functional file sharing, co-authoring, and version control.",
+      "Documentation & decks: structured, professional documents in Word and impactful presentation slide decks in PowerPoint.",
+      "Workflow productivity: basic Power Automate flows and Planner/Lists to streamline everyday operational tasks.",
+    ],
+  },
+];
+
 
 const capabilities = [
   ["01", "Quantitative Statistics & Econometrics", "Correlation matrix analysis, data scrubbing & filtering, multivariate regression modeling, and panel data analysis using Stata & SPSS."],
