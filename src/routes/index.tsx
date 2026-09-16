@@ -10,6 +10,7 @@ import travelMapImg from "@/assets/travel-map-world.jpg";
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
+const certificateUrl = "https://drive.google.com/file/d/17CrbHGanr_7B2MYjfP4hU6M2XbXQsUsa/view?usp=sharing";
 const cvUrl = "https://drive.google.com/file/d/1ukttBGi-ZD9zg9xcaInjkBydY2sHi4Si/view?usp=sharing";
 const pipelineUrl = "https://drive.google.com/file/d/1_HXo-0VReNzRqQWIwisGPuPj7gYIzRon/view?usp=sharing";
 const repoUrl = "https://github.com/thangnghiem04-coder/tnghiem-folio-axis";
@@ -264,6 +265,19 @@ function Index() {
             </div>
             <p className="mt-10 max-w-4xl border-l border-accent pl-6 font-display text-2xl italic text-primary-foreground/80">While evaluating complex systems holistically, my core operational focus lies in Finance and Economics—where data, structure, and strategic leverage yield maximum impact.</p>
             <a href={thesisUrl} target="_blank" rel="noreferrer" className="group mt-12 grid gap-6 border-t border-primary-foreground/20 pt-8 transition-colors hover:text-secondary md:grid-cols-[1fr_auto] md:items-end"><div><p className="text-xs uppercase tracking-[0.15em] text-secondary">Bachelor’s Thesis</p><h3 className="mt-3 font-display text-3xl md:text-4xl">Finance through the lens of large-project management</h3><p className="mt-4 max-w-3xl leading-relaxed text-primary-foreground/65">The thesis connects financial judgment with the realities of managing large projects: capital allocation, governance structures, risk exposure, and the long-term decisions that determine whether complex investments create durable value.</p></div><span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em]">Read thesis <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></span></a>
+            <div className="mt-10 border border-primary-foreground/20 bg-primary-foreground/[0.03] p-8 md:p-10">
+              <p className="text-xs uppercase tracking-[0.15em] text-secondary">Self-study certificates</p>
+              <div className="mt-6 flex flex-col gap-6 border-t border-primary-foreground/15 pt-6 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <h3 className="font-display text-2xl md:text-3xl">Basics of Accounting</h3>
+                  <ul className="mt-5 max-w-3xl space-y-3">
+                    <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65">I am new to accounting — this certificate reflects an early step in my learning rather than deep expertise, and I am building the fundamentals honestly, one topic at a time.</p></li>
+                    <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65">Outside formal study, I keep working to deepen my understanding of accounting and global finance, so the numbers I analyze day to day carry more context and meaning.</p></li>
+                  </ul>
+                </div>
+                <a href={certificateUrl} target="_blank" rel="noreferrer" className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.15em] text-secondary hover:text-primary-foreground">View certificate <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/></a>
+              </div>
+            </div>
           </div>
         </section>
 
