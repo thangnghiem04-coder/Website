@@ -272,8 +272,8 @@ function Index() {
                 <div>
                   <h3 className="font-display text-2xl md:text-3xl">Basics of Accounting</h3>
                   <ul className="mt-5 max-w-3xl space-y-3">
-                    <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65">I am new to accounting — this certificate reflects an early step in my learning rather than deep expertise, and I am building the fundamentals honestly, one topic at a time.</p></li>
-                    <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65">Outside formal study, I keep working to deepen my understanding of accounting and global finance, so the numbers I analyze day to day carry more context and meaning.</p></li>
+                    <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65"><span className="font-semibold text-primary-foreground/85">Core Principles:</span> Focuses on fundamental financial concepts, double-entry bookkeeping, and reading basic financial statements.</p></li>
+                    <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65"><span className="font-semibold text-primary-foreground/85">Continuous Growth:</span> I am actively improving my accounting skills and expanding my knowledge of modern financial practices.</p></li>
                   </ul>
                 </div>
                 <a href={certificateUrl} target="_blank" rel="noreferrer" className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.15em] text-secondary hover:text-primary-foreground">View certificate <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/></a>
