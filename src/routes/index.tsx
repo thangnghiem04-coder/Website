@@ -11,6 +11,7 @@ const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84U
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
 const cvUrl = "https://drive.google.com/file/d/1JV3HofHq2JW-7k_D85ddNu46d7BrEaNF/view?usp=sharing";
+const pipelineUrl = "https://drive.google.com/file/d/1_HXo-0VReNzRqQWIwisGPuPj7gYIzRon/view?usp=sharing";
 
 const glance = [
   ["Education", "Business Administration — Aalto & Tampere University"],
@@ -310,6 +311,7 @@ function Index() {
                 <p className="text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</p>
                 <h4 className="mt-3 font-display text-2xl leading-tight">{heading}</h4>
                 <p className="mt-4 text-sm leading-7 text-muted-foreground">{detail}</p>
+                {i === 1 && <a href={pipelineUrl} target="_blank" rel="noreferrer" className="group mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-accent hover:text-foreground">View sample pipeline work <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/></a>}
               </article>)}
             </div>
 
