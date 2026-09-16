@@ -24,3 +24,4 @@
 - "What I am looking for" in contact
 - Perspective/blog section scaled down
 - Sharpened page title and description (no og:image; hosting supplies preview)
+- [x] Add "Personal AI & Tech Projects" subsection between experience and tools

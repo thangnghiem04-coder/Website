@@ -45,6 +45,12 @@ const roles: { title: string; org: string; place: string; period: string; points
   },
 ];
 
+const aiProjects: [string, string][] = [
+  ["Portfolio development & deployment", "Designed and deployed the personal portfolio website using Lovable for rapid UI generation, GitHub for version control, and Vercel for fast hosting and continuous deployment."],
+  ["Automated job hunting system", "Built an automated job-discovery pipeline running on an Oracle Cloud server, powered by Python, Playwright for web automation, and integrated with Claude API and Gemini code assistance to streamline application tracking and sourcing."],
+  ["Future AI initiatives", "Dedicated free time to scoping, assessing, and developing upcoming AI-driven automation projects with clearly defined constraints and practical use cases."],
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
     { title: "Timothy Nghiem — Business & Financial Data Analyst" },
@@ -295,6 +301,15 @@ function Index() {
                 <ul className="space-y-5">
                   {role.points.map(([heading, detail]) => <li key={heading} className="flex gap-4"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-accent"/><p className="text-sm leading-7 text-muted-foreground"><span className="font-semibold text-foreground">{heading}:</span> {detail}</p></li>)}
                 </ul>
+              </article>)}
+            </div>
+
+            <h3 className="mt-20 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Personal AI &amp; tech projects</h3>
+            <div className="mt-8 grid gap-px border border-border bg-border md:grid-cols-3">
+              {aiProjects.map(([heading, detail], i) => <article key={heading} className="bg-background/60 p-6 transition-colors hover:bg-card md:p-8">
+                <p className="text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</p>
+                <h4 className="mt-3 font-display text-2xl leading-tight">{heading}</h4>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">{detail}</p>
               </article>)}
             </div>
 
