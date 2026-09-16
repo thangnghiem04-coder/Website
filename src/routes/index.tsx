@@ -12,6 +12,7 @@ const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJ
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
 const cvUrl = "https://drive.google.com/file/d/1JV3HofHq2JW-7k_D85ddNu46d7BrEaNF/view?usp=sharing";
 const pipelineUrl = "https://drive.google.com/file/d/1_HXo-0VReNzRqQWIwisGPuPj7gYIzRon/view?usp=sharing";
+const repoUrl = "https://github.com/thangnghiem04-coder/tnghiem-folio-axis";
 
 const glance = [
   ["Education", "Business Administration — Aalto & Tampere University"],
