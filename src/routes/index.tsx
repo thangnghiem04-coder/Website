@@ -10,6 +10,7 @@ import travelMapImg from "@/assets/travel-map-world.jpg";
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
+const certificateUrl = "https://drive.google.com/file/d/17CrbHGanr_7B2MYjfP4hU6M2XbXQsUsa/view?usp=sharing";
 const cvUrl = "https://drive.google.com/file/d/1ukttBGi-ZD9zg9xcaInjkBydY2sHi4Si/view?usp=sharing";
 const pipelineUrl = "https://drive.google.com/file/d/1_HXo-0VReNzRqQWIwisGPuPj7gYIzRon/view?usp=sharing";
 const repoUrl = "https://github.com/thangnghiem04-coder/tnghiem-folio-axis";
