@@ -26,3 +26,4 @@
 - Sharpened page title and description (no og:image; hosting supplies preview)
 - [x] Add "Personal AI & Tech Projects" subsection between experience and tools
 - [x] Add a header language menu with full English, Spanish, French, and Chinese translations
+- [x] Refine the Chinese portfolio wording using the supplied translation
