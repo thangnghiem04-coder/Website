@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowDownRight, ArrowUpRight, BookOpen, ChevronDown, Facebook, Mail, Menu, Phone, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowDownRight, ArrowUpRight, BookOpen, Check, ChevronDown, Facebook, Globe2, Mail, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { portfolioTranslations, type PortfolioLanguage } from "@/lib/portfolio-translations";
 import heroImage from "@/assets/timothy-portfolio-hero.jpg";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
 import travelMapImg from "@/assets/travel-map-world.jpg";
@@ -14,6 +15,79 @@ const certificateUrl = "https://drive.google.com/file/d/17CrbHGanr_7B2MYjfP4hU6M
 const cvUrl = "https://drive.google.com/file/d/1ukttBGi-ZD9zg9xcaInjkBydY2sHi4Si/view?usp=sharing";
 const pipelineUrl = "https://drive.google.com/file/d/1_HXo-0VReNzRqQWIwisGPuPj7gYIzRon/view?usp=sharing";
 const repoUrl = "https://github.com/thangnghiem04-coder/tnghiem-folio-axis";
+
+const languageOptions: { code: PortfolioLanguage; label: string; shortLabel: string }[] = [
+  { code: "en", label: "English", shortLabel: "EN" },
+  { code: "es", label: "Español", shortLabel: "ES" },
+  { code: "fr", label: "Français", shortLabel: "FR" },
+  { code: "zh", label: "中文", shortLabel: "中文" },
+];
+
+function usePortfolioLanguage(language: PortfolioLanguage) {
+  const originalText = useRef(new WeakMap<Text, string>());
+  const originalAttributes = useRef(new WeakMap<Element, Record<string, string>>());
+
+  useEffect(() => {
+    const translate = (root: ParentNode) => {
+      const dictionary = language === "en" ? undefined : portfolioTranslations[language];
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      let node = walker.nextNode();
+      while (node) {
+        const textNode = node as Text;
+        const parent = textNode.parentElement;
+        if (parent && !parent.closest("[data-no-translate]") && !["SCRIPT", "STYLE"].includes(parent.tagName)) {
+          const saved = originalText.current.get(textNode) ?? textNode.textContent ?? "";
+          originalText.current.set(textNode, saved);
+          const trimmed = saved.trim();
+          const translated = dictionary?.[trimmed] ?? trimmed;
+          textNode.textContent = trimmed ? saved.replace(trimmed, translated) : saved;
+        }
+        node = walker.nextNode();
+      }
+
+      const elements = root instanceof Element ? [root, ...root.querySelectorAll("[aria-label], [alt], [title]")] : [...root.querySelectorAll("[aria-label], [alt], [title]")];
+      elements.forEach((element) => {
+        if (element.closest("[data-no-translate]")) return;
+        const saved = originalAttributes.current.get(element) ?? {};
+        ["aria-label", "alt", "title"].forEach((attribute) => {
+          const current = element.getAttribute(attribute);
+          if (current && saved[attribute] === undefined) saved[attribute] = current;
+          const original = saved[attribute];
+          if (original) element.setAttribute(attribute, dictionary?.[original] ?? original);
+        });
+        originalAttributes.current.set(element, saved);
+      });
+    };
+
+    translate(document.body);
+    document.documentElement.lang = language === "zh" ? "zh-CN" : language;
+    window.localStorage.setItem("portfolio-language", language);
+    const observer = new MutationObserver((mutations) => {
+      observer.disconnect();
+      mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => {
+        if (node instanceof Text || node instanceof Element) translate(node instanceof Text ? node.parentElement ?? document.body : node);
+      }));
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [language]);
+}
+
+function LanguageMenu({ language, onChange }: { language: PortfolioLanguage; onChange: (language: PortfolioLanguage) => void }) {
+  const [open, setOpen] = useState(false);
+  const currentLabel = languageOptions.find((option) => option.code === language)?.shortLabel ?? "EN";
+  return <div className="relative" data-no-translate>
+    <Button type="button" variant="ghost" size="sm" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-haspopup="listbox" aria-label="Choose website language" className="gap-2 px-2 text-xs text-muted-foreground hover:text-foreground sm:px-3">
+      <Globe2 className="h-4 w-4"/><span>{currentLabel}</span><ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`}/>
+    </Button>
+    {open && <div role="listbox" aria-label="Website language" className="absolute right-0 top-[calc(100%+0.5rem)] z-50 min-w-40 border border-border bg-background py-1 shadow-xl">
+      {languageOptions.map((option) => <Button key={option.code} type="button" variant="ghost" role="option" aria-selected={language === option.code} onClick={() => { onChange(option.code); setOpen(false); }} className="h-10 w-full justify-between rounded-none px-4 text-sm font-normal">
+        <span>{option.label}</span>{language === option.code && <Check className="h-4 w-4 text-accent"/>}
+      </Button>)}
+    </div>}
+  </div>;
+}
 
 const glance = [
   ["Education", "Business Administration — Aalto & Tampere University"],
@@ -208,15 +282,20 @@ function CapabilityCard({ item, index, expanded, onToggle, onEnter, onLeave }: {
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [language, setLanguage] = useState<PortfolioLanguage>("en");
   const [activeCapability, setActiveCapability] = useState<number | null>(null);
   const [activeTool, setActiveTool] = useState<number | null>(null);
+  useEffect(() => {
+    const saved = window.localStorage.getItem("portfolio-language");
+    if (saved === "en" || saved === "es" || saved === "fr" || saved === "zh") setLanguage(saved);
+  }, []);
+  usePortfolioLanguage(language);
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-10">
           <a href="#top" className="flex items-baseline gap-2 sm:gap-3" aria-label="Timothy Nghiem business portfolio home"><span className="font-display text-xl tracking-[0.08em] sm:text-2xl">T. NGHIEM</span><span className="border-l border-border pl-2 text-[8px] font-semibold uppercase tracking-[0.12em] text-muted-foreground sm:pl-3 sm:text-[10px] sm:tracking-[0.16em]">Business portfolio</span></a>
-          <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">{nav.map(([label, id]) => <a key={id} href={`#${id}`} className="text-xs uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-foreground">{label}</a>)}</nav>
-          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X /> : <Menu />}</Button>
+          <div className="ml-auto flex items-center gap-1 lg:ml-0 lg:gap-4"><nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">{nav.map(([label, id]) => <a key={id} href={`#${id}`} className="text-xs uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-foreground">{label}</a>)}</nav><LanguageMenu language={language} onChange={setLanguage}/><Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X /> : <Menu />}</Button></div>
         </div>
         {menuOpen && <nav className="border-t border-border bg-background px-5 py-6 lg:hidden">{nav.map(([label,id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="block border-b border-border py-3 text-sm uppercase tracking-[0.12em]">{label}</a>)}</nav>}
       </header>
