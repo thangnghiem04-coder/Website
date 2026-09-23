@@ -27,3 +27,4 @@
 - [x] Add "Personal AI & Tech Projects" subsection between experience and tools
 - [x] Add a header language menu with full English, Spanish, French, and Chinese translations
 - [x] Refine the Chinese portfolio wording using the supplied translation
+- [x] Refine the French portfolio wording using the supplied translation
