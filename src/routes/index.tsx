@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowDownRight, ArrowUpRight, BookOpen, Check, ChevronDown, Facebook, Globe2, Mail, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { portfolioTranslations, type PortfolioLanguage } from "@/lib/portfolio-translations";
-import heroImage from "@/assets/timothy-portfolio-hero.jpg";
+import { HeroAnimation } from "@/components/HeroAnimation";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
 import travelMapImg from "@/assets/travel-map-world.jpg";
 
@@ -301,9 +301,9 @@ function Index() {
       </header>
 
       <main id="top">
-        <section className="relative min-h-[92vh] overflow-hidden pt-20">
-          <img src={heroImage} alt="Archival economic charts, world map, compass, and financial ledger on a walnut desk" width={1600} height={1200} className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
-          <div className="absolute inset-0 bg-primary/72" />
+        <section className="relative min-h-[92vh] overflow-hidden bg-[var(--hero-surface)] pt-20">
+          <HeroAnimation />
+          <div className="absolute inset-0" />
           <div className="relative mx-auto flex min-h-[calc(92vh-5rem)] max-w-[1440px] items-end px-5 py-14 md:px-10 md:py-20">
             <div className="reveal-up max-w-5xl text-primary-foreground">
               <p className="mb-7 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/70">Finance · Governance · Economics</p>
