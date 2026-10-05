@@ -37,6 +37,7 @@ export function HeroAnimation() {
     let height = 0;
     let raf = 0;
     let time = 0;
+    let mobile = false;
     const mouse = { x: -9999, y: -9999, active: false };
 
     type Particle = {
@@ -61,9 +62,12 @@ export function HeroAnimation() {
       canvas.height = Math.max(1, Math.floor(height * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // a few large soft orbs plus many small dots — the CLEVER°FRANKE mix
-      const smallCount = Math.min(160, Math.max(70, Math.floor((width * height) / 11000)));
-      const bigCount = Math.min(26, Math.max(10, Math.floor((width * height) / 60000)));
+      // a few large soft orbs plus many small dots — fewer on phones
+      mobile = width < 768;
+      const smallCount = mobile
+        ? 22
+        : Math.min(160, Math.max(70, Math.floor((width * height) / 11000)));
+      const bigCount = mobile ? 4 : Math.min(26, Math.max(10, Math.floor((width * height) / 60000)));
       const make = (big: boolean): Particle => ({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -109,7 +113,7 @@ export function HeroAnimation() {
       // drawn additively so the lines emit light against the brown
       ctx.globalCompositeOperation = "lighter";
       ctx.strokeStyle = lineColor;
-      const linkDist = 190;
+      const linkDist = mobile ? 95 : 190;
       const smalls = particles.filter((p) => !p.big);
       for (let i = 0; i < smalls.length; i++) {
         const a = posOf(smalls[i]!);
@@ -120,8 +124,8 @@ export function HeroAnimation() {
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
           if (dist < linkDist) {
             const t = 1 - dist / linkDist;
-            ctx.globalAlpha = t * 0.95;
-            ctx.lineWidth = 1.6 + 2.6 * t;
+            ctx.globalAlpha = t * (mobile ? 0.55 : 0.95);
+            ctx.lineWidth = mobile ? 0.8 + 1.2 * t : 1.6 + 2.6 * t;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
