@@ -33,3 +33,7 @@
 ## 2026-09-23
 - [x] Section 5 (Skills & Experience) translated to Spanish and Chinese using user-supplied wording: 33 Spanish + 45 Chinese dictionary entries updated in src/lib/portfolio-translations.ts (role titles/bullets, AI projects, all 6 tool rows incl. notes). Verified es + zh at 1280px, build OK.
 - [x] Section 5 translated to French using user-supplied wording: 47 French dictionary entries updated in src/lib/portfolio-translations.ts (role titles/bullets, AI projects, tools section incl. subtitles). Verified fr at 1280px and 390px (lang=fr, no overflow, no console errors), build OK. Note: corrected user's 'feutres de calcul' typo to 'feuilles de calcul'.
+
+## 2026-10-05
+- [x] Status line in the at-a-glance strip updated to "Based in Vietnam • Open to global remote, hybrid, or on-site roles" (user-supplied ES/FR/ZH wording), verified in all four languages.
+- [x] Added phone number +84 039 853 6417 to the contact section link list (beside the existing +358 number).
