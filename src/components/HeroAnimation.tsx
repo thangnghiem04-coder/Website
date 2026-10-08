@@ -215,7 +215,19 @@ export function HeroAnimation() {
     };
 
     resize();
-    window.addEventListener("resize", resize);
+    // keep the drawing size in sync whenever the section height changes
+    // (e.g. switching language shortens the headline)
+    let lastW = width;
+    let lastH = height;
+    const observer = new ResizeObserver(() => {
+      const rect = canvas.getBoundingClientRect();
+      if (Math.abs(rect.width - lastW) < 1 && Math.abs(rect.height - lastH) < 1) return;
+      resize();
+      lastW = width;
+      lastH = height;
+      if (reduced) drawFrame();
+    });
+    observer.observe(canvas);
     const host = canvas.parentElement ?? canvas;
     host.addEventListener("pointermove", onMove);
     host.addEventListener("pointerleave", onLeave);
@@ -228,7 +240,7 @@ export function HeroAnimation() {
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
+      observer.disconnect();
       host.removeEventListener("pointermove", onMove);
       host.removeEventListener("pointerleave", onLeave);
     };
