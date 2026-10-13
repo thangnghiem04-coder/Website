@@ -12,7 +12,7 @@ const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84U
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
 const certificateUrl = "https://drive.google.com/file/d/17CrbHGanr_7B2MYjfP4hU6M2XbXQsUsa/view?usp=sharing";
-const cvUrl = "https://drive.google.com/file/d/1ukttBGi-ZD9zg9xcaInjkBydY2sHi4Si/view?usp=sharing";
+const cvUrl = "https://drive.google.com/file/d/1IJQkYcHJTz41ZHBT3L8vzLLXrFzwiMGU/view?usp=sharing";
 const pipelineUrl = "https://drive.google.com/file/d/1_HXo-0VReNzRqQWIwisGPuPj7gYIzRon/view?usp=sharing";
 const repoUrl = "https://github.com/thangnghiem04-coder/tnghiem-folio-axis";
 
@@ -306,7 +306,7 @@ function Index() {
           <div className="absolute inset-0" />
           <div className="relative mx-auto flex min-h-[calc(92vh-5rem)] max-w-[1440px] items-end px-5 py-14 md:px-10 md:py-20">
             <div className="reveal-up max-w-5xl text-primary-foreground">
-              <p className="mb-7 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/70">Finance · Governance · Economics</p>
+              <p className="mb-7 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/70">Analyst · Governance · Economics</p>
               <h1 className="max-w-5xl font-display text-6xl leading-[0.94] md:text-8xl lg:text-[7.5rem]">Navigating Macro-Dynamics &amp; Strategic Governance.</h1>
               <p className="mt-8 max-w-2xl text-base leading-relaxed text-primary-foreground/75 md:text-lg">Timothy (Thang) Nghiem — Business Administration &amp; Applied Economics Graduate.</p>
               <div className="mt-9 flex flex-wrap gap-3">
