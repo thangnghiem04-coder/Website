@@ -37,3 +37,7 @@
 ## 2026-10-05
 - [x] Status line in the at-a-glance strip updated to "Based in Vietnam • Open to global remote, hybrid, or on-site roles" (user-supplied ES/FR/ZH wording), verified in all four languages.
 - [x] Added phone number +84 039 853 6417 to the contact section link list (beside the existing +358 number).
+
+## 2026-10-13
+- [x] Hero eyebrow label "Finance · Governance · Economics" changed to "Analyst · Governance · Economics" with user-supplied ES/FR/ZH wording (Analista / Analyste / 分析师); dictionary keys renamed in src/lib/portfolio-translations.ts so all four languages match the new source text. Verified at 1280px in en/es/fr/zh, build OK.
+- [x] CV Drive link updated to file 1IJQkYcHJTz41ZHBT3L8vzLLXrFzwiMGU (hero + Contact buttons); verified the old link is gone in all four languages.
