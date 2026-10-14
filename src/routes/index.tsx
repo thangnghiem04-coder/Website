@@ -367,9 +367,19 @@ function Index() {
         </section>
 
         <section id="work" className="section-rule scroll-mt-20">
-          <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-24 md:px-10 md:py-36 lg:grid-cols-2 lg:items-center">
+          <div className="mx-auto grid max-w-[1440px] gap-12 px-5 pb-12 pt-24 md:px-10 md:pb-16 md:pt-36 lg:grid-cols-2 lg:items-center">
             <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">04 / Selected work</p><h2 className="mt-5 font-display text-5xl leading-none md:text-7xl">Selected Deliverables &amp; Analytical Dossiers</h2></div>
             <a href={workUrl} target="_blank" rel="noreferrer" className="group glass-panel block p-8 transition-transform hover:-translate-y-1 md:p-12"><div className="flex items-start justify-between"><BookOpen className="h-10 w-10 text-accent"/><ArrowUpRight className="h-6 w-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></div><p className="mt-16 text-xs uppercase tracking-[0.15em] text-muted-foreground">Private portfolio archive</p><h3 className="mt-3 font-display text-4xl">Work Samples</h3><p className="mt-5 max-w-xl leading-7 text-muted-foreground">Contains quantitative research datasets, empirical project analyses, financial modeling samples, and governance evaluation reports.</p><div className="mt-10 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em]">Open Google Drive <ArrowDownRight className="h-4 w-4"/></div></a>
+          </div>
+          <div className="mx-auto max-w-[1440px] px-5 pb-24 md:px-10 md:pb-36">
+            <div className="border-t border-border pt-12 md:pt-16">
+              <h3 className="font-display text-3xl md:text-4xl">Personal research</h3>
+              <a href={researchUrl} target="_blank" rel="noreferrer" className="group glass-panel mt-8 block p-8 md:p-12">
+                <div className="flex items-start justify-between gap-6"><h4 className="font-display text-2xl leading-snug md:text-3xl">Effects of the 2021-2022 Oil Price Shock on Inflation, Growth and Sectors</h4><ArrowUpRight className="mt-1 h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></div>
+                <ul className="mt-8 space-y-5">{researchPoints.map((point) => <li key={point} className="flex gap-4"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"/><span className="leading-7 text-muted-foreground">{point}</span></li>)}</ul>
+                <div className="mt-10 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em] text-foreground transition-colors group-hover:text-accent">View research materials <ArrowDownRight className="h-4 w-4"/></div>
+              </a>
+            </div>
           </div>
         </section>
 
