@@ -41,3 +41,4 @@
 ## 2026-10-13
 - [x] Hero eyebrow label "Finance · Governance · Economics" changed to "Analyst · Governance · Economics" with user-supplied ES/FR/ZH wording (Analista / Analyste / 分析师); dictionary keys renamed in src/lib/portfolio-translations.ts so all four languages match the new source text. Verified at 1280px in en/es/fr/zh, build OK.
 - [x] CV Drive link updated to file 1IJQkYcHJTz41ZHBT3L8vzLLXrFzwiMGU (hero + Contact buttons); verified the old link is gone in all four languages.
+- 2026-10-14: Added "Personal research" subsection in Selected Work with divider, Oil Price Shock box (3 bullets, all four languages), and Drive folder link.
