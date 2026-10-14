@@ -9,6 +9,12 @@ import travelMapImg from "@/assets/travel-map-world.jpg";
 
 
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
+const researchUrl = "https://drive.google.com/drive/folders/1EBFRUkcwk8fBLT17GRUvRQ42WJFAUr8H?usp=drive_link";
+const researchPoints: string[] = [
+  "Analyzed how the 2021-2022 oil price shock affected inflation, GDP growth, and sectors in 8 countries, using SQL for data work and Power BI for a 3-page dashboard.",
+  "Oil prices rose from $39 (2020) to $95 (2022). Inflation peaked in 2022 in 7 of 8 countries (about 5% on average). Importers' GDP growth fell from 5.5% to 2.1%, while exporters' rose to 5.9%.",
+  "In oil-importing countries, industry (-2.9%) and manufacturing (-2.7%) shrank in 2022, while services grew (+3.9%). Results are descriptive, not causal."
+];
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
 const certificateUrl = "https://drive.google.com/file/d/17CrbHGanr_7B2MYjfP4hU6M2XbXQsUsa/view?usp=sharing";
