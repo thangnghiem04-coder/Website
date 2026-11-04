@@ -10,6 +10,7 @@ import travelMapImg from "@/assets/travel-map-world.jpg";
 
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
 const researchUrl = "https://drive.google.com/drive/folders/1EBFRUkcwk8fBLT17GRUvRQ42WJFAUr8H?usp=drive_link";
+const advisoryUrl = "https://drive.google.com/drive/folders/1ssnlbueaB6835sBBotLCqZtxmWPyX9Ij?usp=drive_link";
 const researchPoints: string[] = [
   "Analyzed how the 2021-2022 oil price shock affected inflation, GDP growth, and sectors in 8 countries, using SQL for data work and Power BI for a 3-page dashboard.",
   "Oil prices rose from $39 (2020) to $95 (2022). Inflation peaked in 2022 in 7 of 8 countries (about 5% on average). Importers' GDP growth fell from 5.5% to 2.1%, while exporters' rose to 5.9%.",
@@ -379,6 +380,13 @@ function Index() {
           </div>
           <div className="mx-auto max-w-[1440px] px-5 pb-24 md:px-10 md:pb-36">
             <div className="border-t border-border pt-12 md:pt-16">
+              <a href={advisoryUrl} target="_blank" rel="noreferrer" className="group glass-panel block p-8 md:p-12">
+                <div className="flex items-start justify-between gap-6"><h4 className="font-display text-2xl leading-snug md:text-3xl">Business Analytics &amp; Strategic Advisory Reports</h4><ArrowUpRight className="mt-1 h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></div>
+                <p className="mt-6 max-w-3xl leading-7 text-muted-foreground">A portfolio repository of data-driven case studies, market analytics, and strategic advisory reports. This collection showcases rigorous quantitative analysis, predictive modeling, data visualization, and actionable business intelligence designed to guide executive decision-making and optimize operational performance across diverse industries.</p>
+                <div className="mt-10 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em] text-foreground transition-colors group-hover:text-accent">View reports <ArrowDownRight className="h-4 w-4"/></div>
+              </a>
+            </div>
+            <div className="mt-12 border-t border-border pt-12 md:pt-16">
               <h3 className="font-display text-3xl md:text-4xl">Personal research</h3>
               <a href={researchUrl} target="_blank" rel="noreferrer" className="group glass-panel mt-8 block p-8 md:p-12">
                 <div className="flex items-start justify-between gap-6"><h4 className="font-display text-2xl leading-snug md:text-3xl">Effects of the 2021-2022 Oil Price Shock on Inflation, Growth and Sectors</h4><ArrowUpRight className="mt-1 h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></div>
