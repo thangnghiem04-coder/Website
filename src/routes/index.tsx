@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowDownRight, ArrowUpRight, BookOpen, Check, ChevronDown, Facebook, Globe2, Mail, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { portfolioTranslations, type PortfolioLanguage } from "@/lib/portfolio-translations";
 import { HeroAnimation } from "@/components/HeroAnimation";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
@@ -229,24 +230,46 @@ function AnalyticalGraphic({ index }: { index: number }) {
   return <svg viewBox="0 0 260 120" aria-label="Process tracing flowchart and audit risk matrix"><g className={`${shared} text-primary/35`} strokeWidth="1.5"><rect x="12" y="20" width="42" height="24"/><rect x="74" y="20" width="42" height="24"/><rect x="136" y="20" width="42" height="24"/><path d="M54 32h20M116 32h20"/></g><g className={`${shared} text-accent`} strokeWidth="1.5"><rect x="183" y="57" width="60" height="45"/><path d="M203 57v45M223 57v45M183 72h60M183 87h60"/></g><path d="M24 72h130M24 72l14-9M24 72l14 9" className={`${shared} text-map-visited`} strokeWidth="2"/><rect x="224" y="58" width="18" height="13" className="fill-map-residence"/></svg>;
 }
 
-function ConstructionScene() {
-  return <div className="excavator-scene" role="img" aria-label="Animated excavator digging the foundations of the forthcoming essay archive">
-    <svg viewBox="0 0 320 150" className="excavator-svg" aria-hidden="true">
-      <g className="excavator-dust"><circle cx="72" cy="122" r="4"/><circle cx="88" cy="118" r="3"/><circle cx="58" cy="118" r="2.5"/></g>
-      <path d="M8 128h96l14 14h60l14-14h120" className="excavator-terrain"/>
-      <g className="excavator-body">
-        <rect x="196" y="106" width="86" height="16" rx="8" className="excavator-track"/>
-        <circle cx="210" cy="114" r="5" className="excavator-wheel"/><circle cx="240" cy="114" r="5" className="excavator-wheel"/><circle cx="270" cy="114" r="5" className="excavator-wheel"/>
-        <rect x="210" y="98" width="62" height="8" className="excavator-frame"/>
-        <path d="M222 98V72h34v26M222 78h34" className="excavator-cab"/>
-        <g className="excavator-arm">
-          <path d="M224 88L168 62" className="excavator-boom"/>
-          <path d="M168 62L128 100" className="excavator-stick"/>
-          <g className="excavator-bucket"><path d="M128 100l-16 6 6 16 22-8z"/></g>
-        </g>
-      </g>
-    </svg>
-  </div>;
+const dossierLanguages = [
+  {
+    code: "EN",
+    title: "The Hidden Networks of the Global Military Supply Chain",
+    description: "Exploring the hidden global networks and geopolitics of the military supply chain.",
+    primary: true,
+  },
+  {
+    code: "FR",
+    title: "Les réseaux cachés de la chaîne d'approvisionnement militaire mondiale",
+    description: "Exploration des réseaux mondiaux cachés et de la géopolitique de la chaîne d'approvisionnement militaire.",
+    primary: false,
+  },
+  {
+    code: "ZH",
+    title: "全球军事供应链的隐蔽网络",
+    description: "探索军事供应链背后隐蔽的全球网络与地缘政治。",
+    primary: false,
+  },
+  {
+    code: "ES",
+    title: "Las redes ocultas de la cadena de suministro militar global",
+    description: "Explorando las redes globales ocultas y la geopolítica de la cadena de suministro militar.",
+    primary: false,
+  },
+];
+
+function DossierMap() {
+  return <svg viewBox="0 0 560 200" role="img" aria-label="World map with dashed routes connecting regions" className="mt-8 h-auto w-full text-accent/65">
+    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.15">
+      <path d="m43 48 19-16 31 2 18 10 20-2 21 13-6 13-18 6-8 17-17 8-10 25-17-7-11-20-15-8-2-18-14-9 9-14Zm88 64 13 4 10 17-3 26-12 24-11-11 4-18-8-17 7-25Zm108-78 19-9 20 6 8 10 18-2 12 11-8 9-22-1-12 8-19-5-8-11-13 2-9-8 14-10Zm59 32 14 7 9 23-8 28-13 15-11-9 5-17-11-17 6-17-12-7 7-9 14 3Zm16-35 39-7 37 9 20-4 35 18-7 16-25 4-14 15-24-5-11 14-22-7-8-17-22-4-5-16-18-6 10-10Zm91 87 22-6 21 7-3 15-23 5-19-7 2-14Z" />
+      <path d="M56 160h448M56 160l12-5m-12 5 12 5M504 160l-12-5m12 5-12 5" opacity=".35" />
+    </g>
+    <g fill="none" stroke="currentColor" strokeDasharray="4 6" strokeLinecap="round" strokeWidth="1.4">
+      <path d="M107 79q77-64 166-23t121 5" />
+      <path d="M273 56q-3 59-91 85t-70-61" />
+      <path d="M273 56q70 25 89 94t66-34" />
+    </g>
+    <g fill="currentColor"><circle cx="107" cy="79" r="3"/><circle cx="273" cy="56" r="3"/><circle cx="394" cy="61" r="3"/><circle cx="182" cy="141" r="3"/><circle cx="362" cy="150" r="3"/></g>
+  </svg>;
 }
 
 function ToolRow({ tool, index, expanded, onToggle, onEnter, onLeave }: { tool: { name: string; note: string; points: string[] }; index: number; expanded: boolean; onToggle: () => void; onEnter: () => void; onLeave: () => void }) {
@@ -292,6 +315,8 @@ function Index() {
   const [language, setLanguage] = useState<PortfolioLanguage>("en");
   const [activeCapability, setActiveCapability] = useState<number | null>(null);
   const [activeTool, setActiveTool] = useState<number | null>(null);
+  const [dossierOpen, setDossierOpen] = useState(false);
+  const [sealingLanguage, setSealingLanguage] = useState<"en" | "vi" | null>(null);
   useEffect(() => {
     const saved = window.localStorage.getItem("portfolio-language");
     if (saved === "en" || saved === "es" || saved === "fr" || saved === "zh") setLanguage(saved);
@@ -440,7 +465,38 @@ function Index() {
         </section>
 
         <section id="perspective" className="scroll-mt-20 bg-secondary/45">
-          <div className="mx-auto max-w-[1440px] px-5 py-14 md:px-10 md:py-20"><div className="grid items-center gap-8 lg:grid-cols-[.85fr_1.15fr]"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">06 / Perspective</p><h2 className="mt-4 font-display text-4xl md:text-5xl">Personal Blog &amp; Essays</h2></div><div className="flex flex-wrap items-center gap-6 border-t border-primary pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0"><div className="max-w-xl"><p className="font-display text-2xl leading-tight text-accent">Currently under development</p><p className="mt-3 text-sm leading-relaxed text-muted-foreground">An upcoming archive of essays on geopolitical risk, quantitative economics, and financial structures.</p></div><div className="w-40 shrink-0 sm:w-48"><ConstructionScene /></div></div></div></div>
+          <div className="mx-auto max-w-[1440px] px-5 py-14 md:px-10 md:py-20"><div className="grid items-center gap-8 lg:grid-cols-[.85fr_1.15fr]"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">06 / Perspective</p><h2 className="mt-4 font-display text-4xl md:text-5xl">Personal Blog &amp; Essays</h2></div><div className="border-t border-primary pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+            <Button type="button" variant="ghost" onClick={() => setDossierOpen(true)} aria-haspopup="dialog" className="dossier-folder group relative block h-auto w-full overflow-visible border border-border bg-background/55 p-6 text-left text-foreground shadow-[0_14px_38px_color-mix(in_oklab,var(--primary)_12%,transparent)] hover:bg-background/65 hover:text-foreground focus-visible:ring-accent md:p-8" data-no-translate>
+              <span aria-hidden="true" className="absolute -top-2 left-8 h-3 w-24 border border-b-0 border-border bg-background/75" />
+              <span aria-hidden="true" className="dossier-stamp absolute right-4 top-4 z-10 -rotate-6 border border-accent px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-accent md:-right-3 md:-top-3 md:px-3 md:py-2 md:text-[10px]">TOP SECRET</span>
+              <span className="block space-y-4 pr-1 pt-4 md:space-y-5 md:pr-4 md:pt-2">
+                {dossierLanguages.map(({ code, title, description, primary }) => <span key={code} className="grid grid-cols-[2.2rem_minmax(0,1fr)] gap-x-3 border-b border-border/70 pb-3 last:border-0 last:pb-0 md:grid-cols-[2.7rem_minmax(0,1fr)] md:gap-x-4">
+                  <span className="pt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-accent">{code}</span>
+                  <span className="min-w-0">
+                    <span className={`block font-display leading-tight ${primary ? "text-2xl md:text-3xl" : "text-lg md:text-xl"}`}>{title}</span>
+                    <span title={description} className="mt-1 block truncate text-xs leading-5 text-muted-foreground">{description}</span>
+                  </span>
+                </span>)}
+              </span>
+              <span className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
+                <span className="font-mono text-[10px] text-muted-foreground">14 steps · EN/VI · interactive map</span>
+                <span className="border-b border-accent pb-1 text-xs font-semibold text-accent">Open the dossier →</span>
+              </span>
+            </Button>
+            <DossierMap />
+            <p className="mt-5 text-xs text-muted-foreground">More essays coming</p>
+          </div></div></div>
+          <Dialog open={dossierOpen} onOpenChange={(open) => { if (!sealingLanguage) setDossierOpen(open); }}>
+            <DialogContent className={`dossier-dialog border-border bg-background p-7 shadow-[0_24px_80px_color-mix(in_oklab,var(--primary)_18%,transparent)] sm:rounded-none md:p-9 ${sealingLanguage ? "dossier-seal-opening" : ""}`} data-no-translate>
+              <span className="dossier-dialog-stamp mx-auto mb-2 w-fit -rotate-6 border border-accent px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">TOP SECRET</span>
+              <DialogTitle className="text-center font-display text-3xl font-normal">Choose your language</DialogTitle>
+              <DialogDescription className="sr-only">Choose English or Vietnamese to open the military supply-chain article.</DialogDescription>
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                <Button type="button" variant="portfolioOutline" disabled={sealingLanguage !== null} onClick={() => { setSealingLanguage("en"); window.setTimeout(() => window.location.assign("/article/military-supply-chain?lang=en"), 400); }} className="h-12 border-accent/50 text-foreground hover:bg-accent hover:text-accent-foreground">English</Button>
+                <Button type="button" variant="portfolioOutline" disabled={sealingLanguage !== null} onClick={() => { setSealingLanguage("vi"); window.setTimeout(() => window.location.assign("/article/military-supply-chain?lang=vi"), 400); }} className="h-12 border-accent/50 text-foreground hover:bg-accent hover:text-accent-foreground">Tiếng Việt</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </section>
 
         <section className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-28"><blockquote className="glass-panel mx-auto max-w-5xl p-8 font-display text-2xl italic leading-relaxed md:p-14 md:text-4xl">“Author&apos;s Note: This digital portal was architected and deployed utilizing state-of-the-art AI systems—reflecting my ongoing commitment to leveraging cutting-edge technology, optimizing operational workflows, and mastering next-generation analytical tools.”</blockquote></section>
