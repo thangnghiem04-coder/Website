@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Standalone long-form articles belong in `public/articles/` and are presented through a dedicated iframe route when the portfolio shell must stay hidden; this preserves the source document while keeping navigation and page-level metadata in the app.

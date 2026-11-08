@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArticleMilitarySupplyChainRouteImport } from './routes/article.military-supply-chain'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArticleMilitarySupplyChainRoute =
+  ArticleMilitarySupplyChainRouteImport.update({
+    id: '/article/military-supply-chain',
+    path: '/article/military-supply-chain',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/article/military-supply-chain': typeof ArticleMilitarySupplyChainRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/article/military-supply-chain': typeof ArticleMilitarySupplyChainRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/article/military-supply-chain': typeof ArticleMilitarySupplyChainRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/article/military-supply-chain'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/article/military-supply-chain'
+  id: '__root__' | '/' | '/article/military-supply-chain'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArticleMilitarySupplyChainRoute: typeof ArticleMilitarySupplyChainRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/article/military-supply-chain': {
+      id: '/article/military-supply-chain'
+      path: '/article/military-supply-chain'
+      fullPath: '/article/military-supply-chain'
+      preLoaderRoute: typeof ArticleMilitarySupplyChainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArticleMilitarySupplyChainRoute: ArticleMilitarySupplyChainRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
