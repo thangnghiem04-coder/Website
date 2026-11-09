@@ -473,8 +473,8 @@ function Index() {
                 {dossierLanguages.map(({ code, title, description, primary }) => <span key={code} className="grid grid-cols-[2.2rem_minmax(0,1fr)] gap-x-3 border-b border-border/70 pb-3 last:border-0 last:pb-0 md:grid-cols-[2.7rem_minmax(0,1fr)] md:gap-x-4">
                   <span className="pt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-accent">{code}</span>
                   <span className="min-w-0">
-                    <span className={`block font-display leading-tight ${primary ? "text-2xl md:text-3xl" : "text-lg md:text-xl"}`}>{title}</span>
-                    <span title={description} className="mt-1 block truncate text-xs leading-5 text-muted-foreground">{description}</span>
+                    <span lang={code === "ZH" ? "zh-CN" : undefined} className={`block max-w-full whitespace-normal break-words font-display leading-tight ${primary ? "text-2xl md:text-3xl" : "text-lg md:text-xl"}`}>{title}</span>
+                    <span className="mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground">{description}</span>
                   </span>
                 </span>)}
               </span>

@@ -43,4 +43,4 @@
 - [x] CV Drive link updated to file 1IJQkYcHJTz41ZHBT3L8vzLLXrFzwiMGU (hero + Contact buttons); verified the old link is gone in all four languages.
 - 2026-10-14: Added "Personal research" subsection in Selected Work with divider, Oil Price Shock box (3 bullets, all four languages), and Drive folder link.
 - 2026-11-04: Added "Business Analytics & Strategic Advisory Reports" box above Personal research (user-supplied ES/FR/ZH wording) with Drive folder link; verified in all four languages at 1280px.
-- [ ] Add the military supply-chain dossier to Section 6, copy the supplied standalone article unchanged, and add its language-choice page.
+- [x] Add the military supply-chain dossier to Section 6, copy the supplied standalone article unchanged, and add its language-choice page; verified English/Vietnamese selection, return navigation, and mobile layout.
