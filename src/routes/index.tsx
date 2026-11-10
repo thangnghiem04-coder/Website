@@ -6,17 +6,17 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/compone
 import { portfolioTranslations, type PortfolioLanguage } from "@/lib/portfolio-translations";
 import { HeroAnimation } from "@/components/HeroAnimation";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
-import travelMapImg from "@/assets/travel-map-world.jpg";
 
 
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
 const researchUrl = "https://drive.google.com/drive/folders/1EBFRUkcwk8fBLT17GRUvRQ42WJFAUr8H?usp=drive_link";
 const advisoryUrl = "https://drive.google.com/drive/folders/1ssnlbueaB6835sBBotLCqZtxmWPyX9Ij?usp=drive_link";
-const researchPoints: string[] = [
-  "Analyzed how the 2021-2022 oil price shock affected inflation, GDP growth, and sectors in 8 countries, using SQL for data work and Power BI for a 3-page dashboard.",
-  "Oil prices rose from $39 (2020) to $95 (2022). Inflation peaked in 2022 in 7 of 8 countries (about 5% on average). Importers' GDP growth fell from 5.5% to 2.1%, while exporters' rose to 5.9%.",
-  "In oil-importing countries, industry (-2.9%) and manufacturing (-2.7%) shrank in 2022, while services grew (+3.9%). Results are descriptive, not causal."
+const researchStats = [
+  { value: "$39 → $95", label: "Oil price, 2020–2022", path: "M3 29 C28 27 38 25 55 22 S84 18 101 15 S129 9 157 4" },
+  { value: "~5%", label: "Average inflation peak, 2022", path: "M3 29 C24 28 37 25 54 23 S76 15 91 12 S111 8 125 11 S144 18 157 21" },
+  { value: "5.5% → 2.1%", label: "GDP growth of importers", path: "M3 5 C25 7 41 9 58 12 S88 17 105 20 S135 25 157 29" },
 ];
+const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Skills", "skills"], ["Perspective", "perspective"], ["Contact", "contact"]];
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
 const certificateUrl = "https://drive.google.com/file/d/17CrbHGanr_7B2MYjfP4hU6M2XbXQsUsa/view?usp=sharing";
@@ -148,8 +148,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Skills", "skills"], ["Perspective", "perspective"], ["Contact", "contact"]];
-
 const tools: { name: string; note: string; points: string[] }[] = [
   {
     name: "Stata",
@@ -220,6 +218,62 @@ function CapabilityIcon({ index }: { index: number }) {
   if (index === 1) return <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M8 43c11-1 17-8 21-19s9-15 19-16M8 12c11 0 17 7 21 18s9 14 19 14" fill="none" stroke="currentColor" strokeWidth="1.5"/><circle cx="29" cy="27" r="3"/></svg>;
   if (index === 2) return <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="19" fill="none" stroke="currentColor" strokeWidth="1.5"/><path d="M9 28h38M28 9c7 7 7 31 0 38M28 9c-7 7-7 31 0 38" fill="none" stroke="currentColor" strokeWidth="1.5"/></svg>;
   return <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M11 8h25l8 8v20M36 8v9h8M17 20h13M17 27h11" fill="none" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="36" r="9" fill="none" stroke="currentColor" strokeWidth="1.5"/><path d="M41 43l7 7" stroke="currentColor" strokeWidth="1.5"/></svg>;
+}
+
+function AboutMap() {
+  return <svg viewBox="0 0 900 320" role="img" aria-label="World map with eight highlighted countries" className="h-auto w-full text-secondary">
+    <g className="fill-current stroke-border" strokeWidth="1.1" strokeLinejoin="round">
+      <path d="m44 76 24-25 42-11 31 8 28-9 35 12 18 22 33 9 21 25-8 17-31 8-20 21-31 3-11 24-26 2-12-16-28-5-20-17-22-3-13-20-20-5-16-20 2-20Z" />
+      <path d="m215 175 22 7 15 20 4 28-12 25-8 29-13 20-10-17 4-21-10-18 6-20-7-20 9-16Z" />
+      <path d="m161 39 31-18 43 4 24 16-13 17-37-2-24 7-24-8Z" />
+      <path d="m389 88 16-13 21 4 11 12-9 10-18 1-11-6Z" />
+      <path d="m400 115 17-10 12 10-4 14-13 8-14-8Z" />
+      <path d="m424 88 23-19 40-5 35 13 43-3 38 14 55-3 50 17 22 21-12 16-35 2-23 17-30-6-19 14-27-10-12-20-29-5-17-18-26 2-17-14-33 4-14-14-28 1Z" />
+      <path d="m453 148 25-7 29 12 16 29-9 26-16 23-9 34-16 12-15-22-1-23-13-22 5-19-12-18Z" />
+      <path d="m533 154 14 8 9 23-9 11-12-8-7-18Z" />
+      <path d="m577 193 19 8 13 18-8 15-19-4-12-16Z" />
+      <path d="m711 234 29-7 31 8 24 18-11 15-32 3-25-9-19-14Z" />
+      <path d="m818 203 12 5 9 14-8 13-12-7Z" />
+    </g>
+    <g className="fill-accent" aria-hidden="true">
+      <circle cx="409" cy="121" r="4" />
+      <circle cx="426" cy="111" r="4" />
+      <circle cx="427" cy="96" r="4" />
+      <circle cx="448" cy="82" r="4" />
+      <circle cx="535" cy="160" r="4" />
+      <circle cx="543" cy="166" r="4" />
+      <circle cx="597" cy="164" r="4" />
+      <circle cx="589" cy="157" r="4" />
+    </g>
+  </svg>;
+}
+
+function AboutMap() {
+  return <svg viewBox="0 0 900 320" role="img" aria-label="World map with eight highlighted countries" className="h-auto w-full text-secondary">
+    <g className="fill-current stroke-border" strokeWidth="1.1" strokeLinejoin="round">
+      <path d="m44 76 24-25 42-11 31 8 28-9 35 12 18 22 33 9 21 25-8 17-31 8-20 21-31 3-11 24-26 2-12-16-28-5-20-17-22-3-13-20-20-5-16-20 2-20Z" />
+      <path d="m215 175 22 7 15 20 4 28-12 25-8 29-13 20-10-17 4-21-10-18 6-20-7-20 9-16Z" />
+      <path d="m161 39 31-18 43 4 24 16-13 17-37-2-24 7-24-8Z" />
+      <path d="m389 88 16-13 21 4 11 12-9 10-18 1-11-6Z" />
+      <path d="m400 115 17-10 12 10-4 14-13 8-14-8Z" />
+      <path d="m424 88 23-19 40-5 35 13 43-3 38 14 55-3 50 17 22 21-12 16-35 2-23 17-30-6-19 14-27-10-12-20-29-5-17-18-26 2-17-14-33 4-14-14-28 1Z" />
+      <path d="m453 148 25-7 29 12 16 29-9 26-16 23-9 34-16 12-15-22-1-23-13-22 5-19-12-18Z" />
+      <path d="m533 154 14 8 9 23-9 11-12-8-7-18Z" />
+      <path d="m577 193 19 8 13 18-8 15-19-4-12-16Z" />
+      <path d="m711 234 29-7 31 8 24 18-11 15-32 3-25-9-19-14Z" />
+      <path d="m818 203 12 5 9 14-8 13-12-7Z" />
+    </g>
+    <g className="fill-accent" aria-hidden="true">
+      <circle cx="409" cy="121" r="4" />
+      <circle cx="426" cy="111" r="4" />
+      <circle cx="427" cy="96" r="4" />
+      <circle cx="448" cy="82" r="4" />
+      <circle cx="535" cy="160" r="4" />
+      <circle cx="543" cy="166" r="4" />
+      <circle cx="597" cy="164" r="4" />
+      <circle cx="589" cy="157" r="4" />
+    </g>
+  </svg>;
 }
 
 function AnalyticalGraphic({ index }: { index: number }) {
