@@ -6,15 +6,22 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/compone
 import { portfolioTranslations, type PortfolioLanguage } from "@/lib/portfolio-translations";
 import { HeroAnimation } from "@/components/HeroAnimation";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
+import { AboutMap } from "@/components/AboutMap";
+import { SectionRail } from "@/components/SectionRail";
 
 
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
 const researchUrl = "https://drive.google.com/drive/folders/1EBFRUkcwk8fBLT17GRUvRQ42WJFAUr8H?usp=drive_link";
 const advisoryUrl = "https://drive.google.com/drive/folders/1ssnlbueaB6835sBBotLCqZtxmWPyX9Ij?usp=drive_link";
 const researchStats = [
-  { value: "$39 → $95", label: "Oil price, 2020–2022", path: "M3 29 C28 27 38 25 55 22 S84 18 101 15 S129 9 157 4" },
-  { value: "~5%", label: "Average inflation peak, 2022", path: "M3 29 C24 28 37 25 54 23 S76 15 91 12 S111 8 125 11 S144 18 157 21" },
-  { value: "5.5% → 2.1%", label: "GDP growth of importers", path: "M3 5 C25 7 41 9 58 12 S88 17 105 20 S135 25 157 29" },
+  { value: "$39 → $95", label: "Oil price, 2020–2022", path: "M3 29 C28 27 38 25 55 22 S84 18 101 15 S129 9 157 4", end: [157, 4] },
+  { value: "~5%", label: "Average inflation peak, 2022", path: "M3 29 C24 28 37 25 54 23 S76 15 91 12 S111 8 125 11 S144 18 157 21", end: [157, 21] },
+  { value: "5.5% → 2.1%", label: "GDP growth of importers", path: "M3 5 C25 7 41 9 58 12 S88 17 105 20 S135 25 157 29", end: [157, 29] },
+];
+const researchPoints: string[] = [
+  "Analyzed how the 2021-2022 oil price shock affected inflation, GDP growth, and sectors in 8 countries, using SQL for data work and Power BI for a 3-page dashboard.",
+  "Oil prices rose from $39 (2020) to $95 (2022). Inflation peaked in 2022 in 7 of 8 countries (about 5% on average). Importers' GDP growth fell from 5.5% to 2.1%, while exporters' rose to 5.9%.",
+  "In oil-importing countries, industry (-2.9%) and manufacturing (-2.7%) shrank in 2022, while services grew (+3.9%). Results are descriptive, not causal."
 ];
 const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Skills", "skills"], ["Perspective", "perspective"], ["Contact", "contact"]];
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
@@ -220,62 +227,6 @@ function CapabilityIcon({ index }: { index: number }) {
   return <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M11 8h25l8 8v20M36 8v9h8M17 20h13M17 27h11" fill="none" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="36" r="9" fill="none" stroke="currentColor" strokeWidth="1.5"/><path d="M41 43l7 7" stroke="currentColor" strokeWidth="1.5"/></svg>;
 }
 
-function AboutMap() {
-  return <svg viewBox="0 0 900 320" role="img" aria-label="World map with eight highlighted countries" className="h-auto w-full text-secondary">
-    <g className="fill-current stroke-border" strokeWidth="1.1" strokeLinejoin="round">
-      <path d="m44 76 24-25 42-11 31 8 28-9 35 12 18 22 33 9 21 25-8 17-31 8-20 21-31 3-11 24-26 2-12-16-28-5-20-17-22-3-13-20-20-5-16-20 2-20Z" />
-      <path d="m215 175 22 7 15 20 4 28-12 25-8 29-13 20-10-17 4-21-10-18 6-20-7-20 9-16Z" />
-      <path d="m161 39 31-18 43 4 24 16-13 17-37-2-24 7-24-8Z" />
-      <path d="m389 88 16-13 21 4 11 12-9 10-18 1-11-6Z" />
-      <path d="m400 115 17-10 12 10-4 14-13 8-14-8Z" />
-      <path d="m424 88 23-19 40-5 35 13 43-3 38 14 55-3 50 17 22 21-12 16-35 2-23 17-30-6-19 14-27-10-12-20-29-5-17-18-26 2-17-14-33 4-14-14-28 1Z" />
-      <path d="m453 148 25-7 29 12 16 29-9 26-16 23-9 34-16 12-15-22-1-23-13-22 5-19-12-18Z" />
-      <path d="m533 154 14 8 9 23-9 11-12-8-7-18Z" />
-      <path d="m577 193 19 8 13 18-8 15-19-4-12-16Z" />
-      <path d="m711 234 29-7 31 8 24 18-11 15-32 3-25-9-19-14Z" />
-      <path d="m818 203 12 5 9 14-8 13-12-7Z" />
-    </g>
-    <g className="fill-accent" aria-hidden="true">
-      <circle cx="409" cy="121" r="4" />
-      <circle cx="426" cy="111" r="4" />
-      <circle cx="427" cy="96" r="4" />
-      <circle cx="448" cy="82" r="4" />
-      <circle cx="535" cy="160" r="4" />
-      <circle cx="543" cy="166" r="4" />
-      <circle cx="597" cy="164" r="4" />
-      <circle cx="589" cy="157" r="4" />
-    </g>
-  </svg>;
-}
-
-function AboutMap() {
-  return <svg viewBox="0 0 900 320" role="img" aria-label="World map with eight highlighted countries" className="h-auto w-full text-secondary">
-    <g className="fill-current stroke-border" strokeWidth="1.1" strokeLinejoin="round">
-      <path d="m44 76 24-25 42-11 31 8 28-9 35 12 18 22 33 9 21 25-8 17-31 8-20 21-31 3-11 24-26 2-12-16-28-5-20-17-22-3-13-20-20-5-16-20 2-20Z" />
-      <path d="m215 175 22 7 15 20 4 28-12 25-8 29-13 20-10-17 4-21-10-18 6-20-7-20 9-16Z" />
-      <path d="m161 39 31-18 43 4 24 16-13 17-37-2-24 7-24-8Z" />
-      <path d="m389 88 16-13 21 4 11 12-9 10-18 1-11-6Z" />
-      <path d="m400 115 17-10 12 10-4 14-13 8-14-8Z" />
-      <path d="m424 88 23-19 40-5 35 13 43-3 38 14 55-3 50 17 22 21-12 16-35 2-23 17-30-6-19 14-27-10-12-20-29-5-17-18-26 2-17-14-33 4-14-14-28 1Z" />
-      <path d="m453 148 25-7 29 12 16 29-9 26-16 23-9 34-16 12-15-22-1-23-13-22 5-19-12-18Z" />
-      <path d="m533 154 14 8 9 23-9 11-12-8-7-18Z" />
-      <path d="m577 193 19 8 13 18-8 15-19-4-12-16Z" />
-      <path d="m711 234 29-7 31 8 24 18-11 15-32 3-25-9-19-14Z" />
-      <path d="m818 203 12 5 9 14-8 13-12-7Z" />
-    </g>
-    <g className="fill-accent" aria-hidden="true">
-      <circle cx="409" cy="121" r="4" />
-      <circle cx="426" cy="111" r="4" />
-      <circle cx="427" cy="96" r="4" />
-      <circle cx="448" cy="82" r="4" />
-      <circle cx="535" cy="160" r="4" />
-      <circle cx="543" cy="166" r="4" />
-      <circle cx="597" cy="164" r="4" />
-      <circle cx="589" cy="157" r="4" />
-    </g>
-  </svg>;
-}
-
 function AnalyticalGraphic({ index }: { index: number }) {
   const shared = "fill-none stroke-current [stroke-linecap:round] [stroke-linejoin:round]";
   if (index === 0) return <svg viewBox="0 0 260 120" aria-label="Regression scatter plot and correlation matrix"><g className={`${shared} text-primary/35`} strokeWidth="1"><path d="M14 12v82h112M146 12v82h100"/><path d="M151 20h84M151 42h84M151 64h84M151 86h84M159 14v78M181 14v78M203 14v78M225 14v78"/></g><path d="M22 82L116 25" className={`${shared} text-map-visited`} strokeWidth="2"/><g className="fill-accent"><circle cx="29" cy="79" r="3"/><circle cx="43" cy="68" r="3"/><circle cx="58" cy="70" r="3"/><circle cx="72" cy="49" r="3"/><circle cx="88" cy="45" r="3"/><circle cx="106" cy="31" r="3"/></g><g className="fill-map-visited"><rect x="160" y="21" width="18" height="18"/><rect x="182" y="43" width="18" height="18" opacity=".7"/><rect x="204" y="65" width="18" height="18" opacity=".45"/><rect x="226" y="21" width="8" height="18" opacity=".25"/></g></svg>;
@@ -330,7 +281,7 @@ function ToolRow({ tool, index, expanded, onToggle, onEnter, onLeave }: { tool: 
   return <div className="border-b border-border transition-colors hover:bg-card focus-within:bg-card" onMouseEnter={onEnter} onMouseLeave={onLeave}>
     <Button type="button" variant="ghost" onClick={onToggle} onFocus={onEnter} aria-expanded={expanded} aria-controls={`tool-panel-${index}`} className="h-auto w-full justify-start rounded-none px-5 py-6 text-left text-foreground hover:bg-transparent hover:text-foreground md:px-8">
       <span className="flex w-full items-center gap-4 whitespace-normal md:gap-8">
-        <span className="text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
+        <span className="font-meta text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
         <span className="flex flex-1 flex-col gap-1 md:flex-row md:items-baseline md:gap-5">
           <span className="font-display text-2xl font-normal leading-tight md:text-3xl">{tool.name}</span>
           <span className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{tool.note}</span>
@@ -354,7 +305,7 @@ function CapabilityCard({ item, index, expanded, onToggle, onEnter, onLeave }: {
   return <article className="group border-b border-r border-border bg-background/35 transition-colors hover:bg-card focus-within:bg-card" onMouseEnter={onEnter} onMouseLeave={onLeave}>
     <Button type="button" variant="ghost" onClick={onToggle} onFocus={onEnter} aria-expanded={expanded} aria-controls={`capability-panel-${index}`} className="h-auto min-h-[250px] w-full items-stretch justify-start rounded-none p-7 text-left text-foreground hover:bg-transparent hover:text-foreground md:p-9">
       <span className="flex w-full flex-col whitespace-normal">
-        <span className="flex items-start justify-between"><span className="text-xs text-muted-foreground">{num}</span><span className="h-20 w-20 text-accent [&>svg]:h-full [&>svg]:w-full md:h-24 md:w-24"><CapabilityIcon index={index}/></span></span>
+        <span className="flex items-start justify-between"><span className="font-meta text-xs text-muted-foreground">{num}</span><span className="h-20 w-20 text-accent [&>svg]:h-full [&>svg]:w-full md:h-24 md:w-24"><CapabilityIcon index={index}/></span></span>
         <span className="mt-12 flex items-end justify-between gap-6"><span className="max-w-sm font-display text-3xl font-normal leading-tight">{title}</span><ChevronDown className={`mb-1 h-5 w-5 shrink-0 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}/></span>
       </span>
     </Button>
@@ -386,6 +337,8 @@ function Index() {
         {menuOpen && <nav className="border-t border-border bg-background px-5 py-6 lg:hidden">{nav.map(([label,id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="block border-b border-border py-3 text-sm uppercase tracking-[0.12em]">{label}</a>)}</nav>}
       </header>
 
+      <SectionRail />
+
       <main id="top">
         <section className="relative min-h-[92vh] overflow-hidden bg-[var(--hero-surface)] pt-20">
           <HeroAnimation />
@@ -410,6 +363,7 @@ function Index() {
             {glance.map(([label, value]) => <div key={label} className="bg-background px-5 py-8 md:px-8"><p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">{label}</p><p className="mt-3 text-sm leading-6 text-muted-foreground">{value}</p></div>)}
           </div>
           <div className="mx-auto max-w-[1440px] border-t border-border px-5 py-6 md:px-8"><p className="text-sm text-muted-foreground"><span className="font-semibold uppercase tracking-[0.14em] text-foreground">Languages</span> <span className="mx-3 text-border">/</span> English (fluent, professional) · Finnish (intermediate, CEFR B1) · Vietnamese (native)</p></div>
+          <div className="mx-auto max-w-[1440px] border-t border-border px-5 py-5 md:px-8"><a href="#perspective" className="group inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground transition-colors hover:text-foreground"><span className="font-meta text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">Now</span><span>Writing an interactive essay on the global military supply chain</span><span aria-hidden="true" className="font-meta text-xs text-accent transition-transform group-hover:translate-x-1">→</span></a></div>
         </section>
 
 
@@ -418,13 +372,13 @@ function Index() {
             <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">01 / About</p><h2 className="mt-6 font-display text-5xl leading-none md:text-7xl">The Intersection of Capital, Policy, and Governance</h2></div>
             <div className="lg:pt-12"><p className="max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">I operate at the crossroads where macroeconomic realities meet geopolitical strategy. With a foundation in Business Administration, economics, and administrative politics, my focus centers on how policy shifts and market dynamics govern capital allocation and risk.</p></div>
           </div>
-          <div className="mt-20 grid gap-8 lg:grid-cols-[1.5fr_.7fr] lg:items-end"><figure className="glass-panel overflow-hidden"><img src={travelMapImg} alt="World map highlighting Vietnam, China, France, Germany, Denmark, Finland, Qatar, and the UAE" width={1200} height={800} loading="lazy" className="h-auto w-full"/></figure><div className="pb-2"><p className="font-display text-4xl">8 countries</p><p className="mt-4 leading-relaxed text-muted-foreground">Born and raised in Vietnam, with experience across China, France, Denmark, Germany, UAE, and Qatar — currently based in Finland.</p></div></div>
+          <div className="mt-20 grid gap-8 lg:grid-cols-[1.5fr_.7fr] lg:items-end"><figure className="glass-panel reveal-scroll overflow-hidden p-4 md:p-6"><AboutMap /></figure><div className="pb-2"><p className="font-display text-4xl">8 countries</p><p className="mt-4 leading-relaxed text-muted-foreground">Born and raised in Vietnam, with experience across China, France, Denmark, Germany, UAE, and Qatar — currently based in Finland.</p></div></div>
         </section>
 
         <section id="academic" className="section-rule scroll-mt-20 bg-primary text-primary-foreground">
           <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-32">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/55">02 / Academic rigor</p><h2 className="mt-5 max-w-3xl font-display text-5xl leading-none md:text-7xl">Strategic vision, built on evidence.</h2></div><Button asChild variant="portfolioOutline" size="portfolio" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary"><a href={transcriptUrl} target="_blank" rel="noreferrer">View official transcript <ArrowUpRight /></a></Button></div>
-            <div className="mt-16 grid border border-primary-foreground/20 md:grid-cols-2">
+            <div className="reveal-scroll mt-16 grid border border-primary-foreground/20 md:grid-cols-2">
                <div className="p-8 md:border-r md:border-primary-foreground/20 md:p-12"><div className="font-display text-8xl md:text-9xl">190</div><p className="mt-4 text-sm uppercase tracking-[0.16em] text-primary-foreground/60">ECTS completed in 2 years</p><div className="mt-8 border-t border-primary-foreground/20 pt-6"><p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/50">Academic institutions</p><p className="mt-3 font-display text-2xl">Tampere University · Aalto University</p></div></div>
               <div className="divide-y divide-primary-foreground/20"><div className="p-8 md:p-10"><p className="text-xs uppercase tracking-[0.15em] text-secondary">Mastering Large Engineering Projects</p><p className="mt-4 leading-relaxed text-primary-foreground/70">Investigating structural governance, capital expenditure auditing, and risk management frameworks in multi-billion euro infrastructure assets.</p></div><div className="p-8 md:p-10"><p className="text-xs uppercase tracking-[0.15em] text-secondary">Quantitative Exploration</p><p className="mt-4 leading-relaxed text-primary-foreground/70">Actively expanding practical capabilities in coding and machine learning for economic predictions and automated auditing.</p></div></div>
             </div>
@@ -449,7 +403,7 @@ function Index() {
 
         <section id="capabilities" className="mx-auto max-w-[1440px] scroll-mt-20 px-5 py-24 md:px-10 md:py-36">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">03 / Capabilities</p><h2 className="mt-5 font-display text-5xl uppercase md:text-7xl">Core Capabilities</h2>
-          <div className="mt-16 grid border-l border-t border-border md:grid-cols-2">{capabilities.map((item, i) => <CapabilityCard key={item[1]} item={item} index={i} expanded={activeCapability === i} onToggle={() => setActiveCapability(activeCapability === i && window.matchMedia("(hover: none)").matches ? null : i)} onEnter={() => setActiveCapability(i)} onLeave={() => setActiveCapability((current) => current === i ? null : current)}/>)}</div>
+          <div className="reveal-scroll mt-16 grid border-l border-t border-border md:grid-cols-2">{capabilities.map((item, i) => <CapabilityCard key={item[1]} item={item} index={i} expanded={activeCapability === i} onToggle={() => setActiveCapability(activeCapability === i && window.matchMedia("(hover: none)").matches ? null : i)} onEnter={() => setActiveCapability(i)} onLeave={() => setActiveCapability((current) => current === i ? null : current)}/>)}</div>
         </section>
 
         <section id="work" className="section-rule scroll-mt-20">
@@ -465,10 +419,17 @@ function Index() {
                 <div className="mt-10 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em] text-foreground transition-colors group-hover:text-accent">View reports <ArrowDownRight className="h-4 w-4"/></div>
               </a>
             </div>
-            <div className="mt-12 border-t border-border pt-12 md:pt-16">
+            <div className="reveal-scroll mt-12 border-t border-border pt-12 md:pt-16">
               <h3 className="font-display text-3xl md:text-4xl">Personal research</h3>
               <a href={researchUrl} target="_blank" rel="noreferrer" className="group glass-panel mt-8 block p-8 md:p-12">
                 <div className="flex items-start justify-between gap-6"><h4 className="font-display text-2xl leading-snug md:text-3xl">Effects of the 2021-2022 Oil Price Shock on Inflation, Growth and Sectors</h4><ArrowUpRight className="mt-1 h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></div>
+                <div className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-3">
+                  {researchStats.map((stat) => <div key={stat.label} className="bg-background/70 p-5 md:p-6">
+                    <svg viewBox="0 0 160 34" aria-hidden="true" className="h-auto w-full text-accent"><path d={stat.path} fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke"/><circle cx={stat.end[0]} cy={stat.end[1]} r="2" fill="currentColor"/></svg>
+                    <p className="mt-4 font-display text-3xl leading-none md:text-4xl">{stat.value}</p>
+                    <p className="mt-3 font-meta text-[10px] uppercase tracking-[0.14em] text-muted-foreground">{stat.label}</p>
+                  </div>)}
+                </div>
                 <ul className="mt-8 space-y-5">{researchPoints.map((point) => <li key={point} className="flex gap-4"><span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"/><span className="leading-7 text-muted-foreground">{point}</span></li>)}</ul>
                 <div className="mt-10 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em] text-foreground transition-colors group-hover:text-accent">View research materials <ArrowDownRight className="h-4 w-4"/></div>
               </a>
@@ -489,10 +450,12 @@ function Index() {
             </figure>
 
             <h3 className="mt-20 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Professional experience</h3>
-            <div className="mt-8 border-t border-border">
-              {roles.map((role) => <article key={role.title} className="grid gap-8 border-b border-border py-10 md:grid-cols-[.85fr_1.15fr] md:py-14">
+            <div className="relative mt-8 border-t border-border md:pl-10">
+              <span aria-hidden="true" className="absolute bottom-0 left-[5px] top-0 hidden w-px bg-border md:block" />
+              {roles.map((role) => <article key={role.title} className="reveal-scroll relative grid gap-8 border-b border-border py-10 md:grid-cols-[.85fr_1.15fr] md:py-14">
+                <span aria-hidden="true" className="absolute -left-10 top-[3.65rem] hidden h-[11px] w-[11px] rounded-full border-2 border-accent bg-background md:block" />
                 <div>
-                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">{role.period}</p>
+                  <p className="font-meta text-xs uppercase tracking-[0.15em] text-accent">{role.period}</p>
                   <h4 className="mt-4 font-display text-3xl leading-tight md:text-4xl">{role.title}</h4>
                   <p className="mt-4 text-sm font-medium text-foreground">{role.org}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{role.place}</p>
@@ -504,9 +467,9 @@ function Index() {
             </div>
 
             <h3 className="mt-20 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Personal AI &amp; tech projects</h3>
-            <div className="mt-8 grid gap-px border border-border bg-border md:grid-cols-3">
+            <div className="reveal-scroll mt-8 grid gap-px border border-border bg-border md:grid-cols-3">
               {aiProjects.map(([heading, detail], i) => <article key={heading} className="bg-background/60 p-6 transition-colors hover:bg-card md:p-8">
-                <p className="text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</p>
+                <p className="font-meta text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</p>
                 <h4 className="mt-3 font-display text-2xl leading-tight">{heading}</h4>
                 <p className="mt-4 text-sm leading-7 text-muted-foreground">{detail}</p>
                 {(i === 0 || i === 1) && <a href={i === 0 ? repoUrl : pipelineUrl} target="_blank" rel="noreferrer" className="group mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-accent hover:text-foreground">{i === 0 ? "View on GitHub" : "View sample pipeline work"} <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/></a>}

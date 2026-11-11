@@ -44,3 +44,12 @@
 - 2026-10-14: Added "Personal research" subsection in Selected Work with divider, Oil Price Shock box (3 bullets, all four languages), and Drive folder link.
 - 2026-11-04: Added "Business Analytics & Strategic Advisory Reports" box above Personal research (user-supplied ES/FR/ZH wording) with Drive folder link; verified in all four languages at 1280px.
 - [x] Add the military supply-chain dossier to Section 6, copy the supplied standalone article unchanged, and add its language-choice page; verified English/Vietnamese selection, return navigation, and mobile layout.
+
+## 2026-11-10 — Visual upgrade (sections 01–05; header, section 06 and footer untouched)
+- [x] Fix build breakers in src/routes/index.tsx: duplicate `AboutMap` declaration, missing `travelMapImg` import, undefined `researchPoints`.
+- [x] About map rebuilt from Natural Earth boundaries in the portfolio palette (src/components/AboutMap.tsx) with legend.
+- [x] Oil price research card: three stat tiles with sparklines above the existing bullets.
+- [x] Experience shown as a timeline; small monospace font (`font-meta`, IBM Plex Mono) for numbers and dates.
+- [x] "Now" line under the profile strip linking to Perspective; left section index (`SectionRail`, 1500px and up); scroll-linked reveal (`reveal-scroll`, CSS only).
+- [x] ES/FR/ZH entries added for all new strings in src/lib/portfolio-translations.ts.
+
