@@ -204,7 +204,7 @@ export const portfolioTranslations: Record<Exclude<PortfolioLanguage, "en">, Rec
     "Vietnamese": "Vietnamita",
     "Visit Project 512": "Visitar Project 512",
     "Based in Hanoi, Vietnam, open to hybrid, remote, or on-site positions globally, and available to start immediately.": "Con base en Hanói, Vietnam, abierto a puestos híbridos, remotos o presenciales a nivel global, y disponible para incorporarse de inmediato.",
-    "Based in Hanoi · Working globally": "Con sede en Hanói · Trabajando a nivel global",,,
+    "Based in Hanoi · Working globally": "Con sede en Hanói · Trabajando a nivel global",
     "VOL. I · ISSUE 512": "第一卷 · 第 512 期",
     "INDEPENDENT DIGITAL NEWSPAPER & LITERARY PRESS": "独立数字报纸与文学出版刊物",
     "HANOI · EST. 2026": "河内 · 创刊于 2026",
