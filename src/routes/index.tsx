@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowDownRight, ArrowUpRight, BookOpen, Check, ChevronDown, Facebook, Globe2, Mail, Menu, Phone, X } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, BookOpen, Check, ChevronDown, Facebook, Globe2, Mail, Menu, Newspaper, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { portfolioTranslations, type PortfolioLanguage } from "@/lib/portfolio-translations";
 import { HeroAnimation } from "@/components/HeroAnimation";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
@@ -13,6 +12,7 @@ import { SectionRail } from "@/components/SectionRail";
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
 const researchUrl = "https://drive.google.com/drive/folders/1EBFRUkcwk8fBLT17GRUvRQ42WJFAUr8H?usp=drive_link";
 const advisoryUrl = "https://drive.google.com/drive/folders/1ssnlbueaB6835sBBotLCqZtxmWPyX9Ij?usp=drive_link";
+const project512Url = "https://project-512.pages.dev/";
 const researchStats = [
   { value: "$39 → $95", label: "Oil price, 2020–2022", path: "M3 29 C28 27 38 25 55 22 S84 18 101 15 S129 9 157 4", end: [157, 4] },
   { value: "~5%", label: "Average inflation peak, 2022", path: "M3 29 C24 28 37 25 54 23 S76 15 91 12 S111 8 125 11 S144 18 157 21", end: [157, 21] },
@@ -23,13 +23,13 @@ const researchPoints: string[] = [
   "Oil prices rose from $39 (2020) to $95 (2022). Inflation peaked in 2022 in 7 of 8 countries (about 5% on average). Importers' GDP growth fell from 5.5% to 2.1%, while exporters' rose to 5.9%.",
   "In oil-importing countries, industry (-2.9%) and manufacturing (-2.7%) shrank in 2022, while services grew (+3.9%). Results are descriptive, not causal."
 ];
-const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Skills", "skills"], ["Perspective", "perspective"], ["Contact", "contact"]];
+const nav = [["About", "about"], ["Academic", "academic"], ["Capabilities", "capabilities"], ["Selected Work", "work"], ["Skills", "skills"], ["Project 512", "perspective"], ["Contact", "contact"]];
 const transcriptUrl = "https://drive.google.com/file/d/1vUTw9c2nO8ngR5mvj21gUYWJh39UAZvu/view?usp=drive_link";
 const thesisUrl = "https://drive.google.com/file/d/1zg4gA3IqadKLh6plM5GcGYvfG8oN8_J_/view?usp=sharing";
 const certificateUrl = "https://drive.google.com/file/d/17CrbHGanr_7B2MYjfP4hU6M2XbXQsUsa/view?usp=sharing";
 const cvUrl = "https://drive.google.com/file/d/1IJQkYcHJTz41ZHBT3L8vzLLXrFzwiMGU/view?usp=sharing";
 const pipelineUrl = "https://drive.google.com/file/d/1_HXo-0VReNzRqQWIwisGPuPj7gYIzRon/view?usp=sharing";
-const repoUrl = "https://github.com/thangnghiem04-coder/tnghiem-folio-axis";
+const repoUrl = "https://github.com/thangnghiem04-coder/Website";
 
 const languageOptions: { code: PortfolioLanguage; label: string; shortLabel: string }[] = [
   { code: "en", label: "English", shortLabel: "EN" },
@@ -107,8 +107,8 @@ function LanguageMenu({ language, onChange }: { language: PortfolioLanguage; onC
 const glance = [
   ["Education", "Business Administration — Aalto & Tampere University"],
   ["Academic load", "190 ECTS completed in two years"],
-  ["Core tools", "Advanced Excel · Stata · SPSS · SAP S/4HANA · MS Dynamics 365"],
-  ["Status", "Based in Vietnam • Open to global remote, hybrid, or on-site roles"],
+  ["Core tools", "Advanced Excel · Stata · SPSS · Python · SQL · Git & Cloud Deployment"],
+  ["Status", "Based in Hanoi, Vietnam • Open to global remote, hybrid, or on-site roles"],
 ];
 
 const roles: { title: string; org: string; place: string; period: string; points: [string, string][] }[] = [
@@ -138,17 +138,16 @@ const roles: { title: string; org: string; place: string; period: string; points
 ];
 
 const aiProjects: [string, string][] = [
-  ["Portfolio development & deployment", "Designed and deployed the personal portfolio website using Lovable for rapid UI generation, GitHub for version control, and Vercel for fast hosting and continuous deployment."],
+  ["Portfolio development & deployment", "Designed and deployed the personal portfolio website using AI-assisted UI workflows, GitHub for version control, and Cloudflare Pages for fast hosting and continuous deployment."],
   ["Automated job hunting system", "Built an automated job-discovery pipeline running on an Oracle Cloud server, powered by Python, Playwright for web automation, and integrated with Claude API and Gemini code assistance to streamline application tracking and sourcing."],
-  ["Future AI initiatives", "Dedicated free time to scoping, assessing, and developing upcoming AI-driven automation projects with clearly defined constraints and practical use cases."],
 ];
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
     { title: "Timothy Nghiem — Business & Financial Data Analyst" },
-    { name: "description", content: "Timothy (Thang) Nghiem — Business Administration graduate in Tampere, Finland. Financial reporting, data analytics, ERP, and governance research. CV and work samples available." },
+    { name: "description", content: "Timothy (Thang) Nghiem — Business Administration graduate based in Hanoi, Vietnam. Financial reporting, data analytics, quantitative modeling, and governance research. CV and work samples available." },
     { property: "og:title", content: "Timothy Nghiem — Business & Financial Data Analyst" },
-    { property: "og:description", content: "Business Administration graduate in Tampere, Finland. Financial reporting, data analytics, ERP, and governance research — CV and work samples available." },
+    { property: "og:description", content: "Business Administration graduate based in Hanoi, Vietnam. Financial reporting, data analytics, quantitative modeling, and governance research — CV and work samples available." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
@@ -193,21 +192,21 @@ const tools: { name: string; note: string; points: string[] }[] = [
     ],
   },
   {
-    name: "SAP S/4HANA",
-    note: "Enterprise Resource Planning",
+    name: "Python & Web Automation",
+    note: "Data Scripting & AI Integration",
     points: [
-      "Enterprise ERP navigation: SAP Fiori launchpad and GUI to execute core business transactions across finance and operations modules.",
-      "Process execution: tracking purchase requisitions, orders, invoices, and reviewing financial ledger entries.",
-      "Reporting & data reconciliation: SAP built-in analytics, operational reports, and exporting system data for external analysis.",
+      "Data processing & scripting: automated data cleaning, structured scraping, and analytical pipelines built in Python.",
+      "Browser & workflow automation: headless web automation and task pipelines powered by Playwright.",
+      "AI API integration: connecting LLM APIs (Claude, Gemini) for automated filtering, summarization, and structured extraction.",
     ],
   },
   {
-    name: "Microsoft 365",
-    note: "Collaboration & Workflow",
+    name: "Git, GitHub & Web Deployment",
+    note: "Version Control & Cloud Hosting",
     points: [
-      "Collaborative ecosystem: Teams, SharePoint, and OneDrive for cross-functional file sharing, co-authoring, and version control.",
-      "Documentation & decks: structured, professional documents in Word and impactful presentation slide decks in PowerPoint.",
-      "Workflow productivity: basic Power Automate flows and Planner/Lists to streamline everyday operational tasks.",
+      "Version control & repositories: managing source code, branching, and iterative releases through Git and GitHub.",
+      "Cloud deployment & hosting: continuous deployment and edge hosting on Cloudflare Pages and Vercel.",
+      "Modern web stack: building responsive interfaces and interactive digital publications with HTML, CSS, TypeScript, and AI-assisted workflows.",
     ],
   },
 ];
@@ -233,48 +232,6 @@ function AnalyticalGraphic({ index }: { index: number }) {
   if (index === 1) return <svg viewBox="0 0 260 120" aria-label="IS-LM and aggregate supply-demand equilibrium"><g className={`${shared} text-primary/35`} strokeWidth="1"><path d="M14 10v88h108M142 10v88h104"/></g><path d="M24 23c37 12 60 37 90 68M24 91c35-8 60-31 91-70" className={`${shared} text-map-visited`} strokeWidth="2"/><path d="M151 88c32-10 55-36 86-68M151 22c29 15 53 39 87 67" className={`${shared} text-accent`} strokeWidth="2"/><g className="fill-map-residence"><circle cx="69" cy="58" r="4"/><circle cx="194" cy="57" r="4"/></g></svg>;
   if (index === 2) return <svg viewBox="0 0 260 120" aria-label="Institutional timeline and governance matrix"><path d="M16 35h224" className={`${shared} text-primary/35`} strokeWidth="1"/><g className="fill-map-visited"><circle cx="30" cy="35" r="5"/><circle cx="84" cy="35" r="5"/><circle cx="138" cy="35" r="5"/><circle cx="192" cy="35" r="5"/><circle cx="238" cy="35" r="5"/></g><g className={`${shared} text-accent`} strokeWidth="1.5"><path d="M30 35v-15h54v15M138 35v-15h54v15"/><rect x="55" y="65" width="42" height="30"/><rect x="100" y="65" width="42" height="30"/><rect x="145" y="65" width="42" height="30"/><rect x="190" y="65" width="42" height="30"/></g></svg>;
   return <svg viewBox="0 0 260 120" aria-label="Process tracing flowchart and audit risk matrix"><g className={`${shared} text-primary/35`} strokeWidth="1.5"><rect x="12" y="20" width="42" height="24"/><rect x="74" y="20" width="42" height="24"/><rect x="136" y="20" width="42" height="24"/><path d="M54 32h20M116 32h20"/></g><g className={`${shared} text-accent`} strokeWidth="1.5"><rect x="183" y="57" width="60" height="45"/><path d="M203 57v45M223 57v45M183 72h60M183 87h60"/></g><path d="M24 72h130M24 72l14-9M24 72l14 9" className={`${shared} text-map-visited`} strokeWidth="2"/><rect x="224" y="58" width="18" height="13" className="fill-map-residence"/></svg>;
-}
-
-const dossierLanguages = [
-  {
-    code: "EN",
-    title: "The Hidden Networks of the Global Military Supply Chain",
-    description: "Exploring the hidden global networks and geopolitics of the military supply chain.",
-    primary: true,
-  },
-  {
-    code: "FR",
-    title: "Les réseaux cachés de la chaîne d'approvisionnement militaire mondiale",
-    description: "Exploration des réseaux mondiaux cachés et de la géopolitique de la chaîne d'approvisionnement militaire.",
-    primary: false,
-  },
-  {
-    code: "ZH",
-    title: "全球军事供应链的隐蔽网络",
-    description: "探索军事供应链背后隐蔽的全球网络与地缘政治。",
-    primary: false,
-  },
-  {
-    code: "ES",
-    title: "Las redes ocultas de la cadena de suministro militar global",
-    description: "Explorando las redes globales ocultas y la geopolítica de la cadena de suministro militar.",
-    primary: false,
-  },
-];
-
-function DossierMap() {
-  return <svg viewBox="0 0 560 200" role="img" aria-label="World map with dashed routes connecting regions" className="mt-8 h-auto w-full text-accent/65">
-    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.15">
-      <path d="m43 48 19-16 31 2 18 10 20-2 21 13-6 13-18 6-8 17-17 8-10 25-17-7-11-20-15-8-2-18-14-9 9-14Zm88 64 13 4 10 17-3 26-12 24-11-11 4-18-8-17 7-25Zm108-78 19-9 20 6 8 10 18-2 12 11-8 9-22-1-12 8-19-5-8-11-13 2-9-8 14-10Zm59 32 14 7 9 23-8 28-13 15-11-9 5-17-11-17 6-17-12-7 7-9 14 3Zm16-35 39-7 37 9 20-4 35 18-7 16-25 4-14 15-24-5-11 14-22-7-8-17-22-4-5-16-18-6 10-10Zm91 87 22-6 21 7-3 15-23 5-19-7 2-14Z" />
-      <path d="M56 160h448M56 160l12-5m-12 5 12 5M504 160l-12-5m12 5-12 5" opacity=".35" />
-    </g>
-    <g fill="none" stroke="currentColor" strokeDasharray="4 6" strokeLinecap="round" strokeWidth="1.4">
-      <path d="M107 79q77-64 166-23t121 5" />
-      <path d="M273 56q-3 59-91 85t-70-61" />
-      <path d="M273 56q70 25 89 94t66-34" />
-    </g>
-    <g fill="currentColor"><circle cx="107" cy="79" r="3"/><circle cx="273" cy="56" r="3"/><circle cx="394" cy="61" r="3"/><circle cx="182" cy="141" r="3"/><circle cx="362" cy="150" r="3"/></g>
-  </svg>;
 }
 
 function ToolRow({ tool, index, expanded, onToggle, onEnter, onLeave }: { tool: { name: string; note: string; points: string[] }; index: number; expanded: boolean; onToggle: () => void; onEnter: () => void; onLeave: () => void }) {
@@ -320,8 +277,6 @@ function Index() {
   const [language, setLanguage] = useState<PortfolioLanguage>("en");
   const [activeCapability, setActiveCapability] = useState<number | null>(null);
   const [activeTool, setActiveTool] = useState<number | null>(null);
-  const [dossierOpen, setDossierOpen] = useState(false);
-  const [sealingLanguage, setSealingLanguage] = useState<"en" | "vi" | null>(null);
   useEffect(() => {
     const saved = window.localStorage.getItem("portfolio-language");
     if (saved === "en" || saved === "es" || saved === "fr" || saved === "zh") setLanguage(saved);
@@ -363,7 +318,7 @@ function Index() {
             {glance.map(([label, value]) => <div key={label} className="bg-background px-5 py-8 md:px-8"><p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">{label}</p><p className="mt-3 text-sm leading-6 text-muted-foreground">{value}</p></div>)}
           </div>
           <div className="mx-auto max-w-[1440px] border-t border-border px-5 py-6 md:px-8"><p className="text-sm text-muted-foreground"><span className="font-semibold uppercase tracking-[0.14em] text-foreground">Languages</span> <span className="mx-3 text-border">/</span> English (fluent, professional) · Finnish (intermediate, CEFR B1) · Vietnamese (native)</p></div>
-          <div className="mx-auto max-w-[1440px] border-t border-border px-5 py-5 md:px-8"><a href="#perspective" className="group inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground transition-colors hover:text-foreground"><span className="font-meta text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">Now</span><span>Writing an interactive essay on the global military supply chain</span><span aria-hidden="true" className="font-meta text-xs text-accent transition-transform group-hover:translate-x-1">→</span></a></div>
+          <div className="mx-auto max-w-[1440px] border-t border-border px-5 py-5 md:px-8"><a href="#perspective" className="group inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground transition-colors hover:text-foreground"><span className="font-meta text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">Publication</span><span>Project 512 — Independent digital newspaper &amp; editorial platform</span><span aria-hidden="true" className="font-meta text-xs text-accent transition-transform group-hover:translate-x-1">→</span></a></div>
         </section>
 
 
@@ -372,7 +327,7 @@ function Index() {
             <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">01 / About</p><h2 className="mt-6 font-display text-5xl leading-none md:text-7xl">The Intersection of Capital, Policy, and Governance</h2></div>
             <div className="lg:pt-12"><p className="max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">I operate at the crossroads where macroeconomic realities meet geopolitical strategy. With a foundation in Business Administration, economics, and administrative politics, my focus centers on how policy shifts and market dynamics govern capital allocation and risk.</p></div>
           </div>
-          <div className="mt-20 grid gap-8 lg:grid-cols-[1.5fr_.7fr] lg:items-end"><figure className="glass-panel reveal-scroll overflow-hidden p-4 md:p-6"><AboutMap /></figure><div className="pb-2"><p className="font-display text-4xl">8 countries</p><p className="mt-4 leading-relaxed text-muted-foreground">Born and raised in Vietnam, with experience across China, France, Denmark, Germany, UAE, and Qatar — currently based in Finland.</p></div></div>
+          <div className="mt-20 grid gap-8 lg:grid-cols-[1.5fr_.7fr] lg:items-end"><figure className="glass-panel reveal-scroll overflow-hidden p-4 md:p-6"><AboutMap /></figure><div className="pb-2"><p className="font-display text-4xl">8 countries</p><p className="mt-4 leading-relaxed text-muted-foreground">Born and raised in Vietnam, with international experience across China, France, Denmark, Germany, UAE, Qatar, and Finland — currently based in Hanoi.</p></div></div>
         </section>
 
         <section id="academic" className="section-rule scroll-mt-20 bg-primary text-primary-foreground">
@@ -380,7 +335,7 @@ function Index() {
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/55">02 / Academic rigor</p><h2 className="mt-5 max-w-3xl font-display text-5xl leading-none md:text-7xl">Strategic vision, built on evidence.</h2></div><Button asChild variant="portfolioOutline" size="portfolio" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary"><a href={transcriptUrl} target="_blank" rel="noreferrer">View official transcript <ArrowUpRight /></a></Button></div>
             <div className="reveal-scroll mt-16 grid border border-primary-foreground/20 md:grid-cols-2">
                <div className="p-8 md:border-r md:border-primary-foreground/20 md:p-12"><div className="font-display text-8xl md:text-9xl">190</div><p className="mt-4 text-sm uppercase tracking-[0.16em] text-primary-foreground/60">ECTS completed in 2 years</p><div className="mt-8 border-t border-primary-foreground/20 pt-6"><p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/50">Academic institutions</p><p className="mt-3 font-display text-2xl">Tampere University · Aalto University</p></div></div>
-              <div className="divide-y divide-primary-foreground/20"><div className="p-8 md:p-10"><p className="text-xs uppercase tracking-[0.15em] text-secondary">Mastering Large Engineering Projects</p><p className="mt-4 leading-relaxed text-primary-foreground/70">Investigating structural governance, capital expenditure auditing, and risk management frameworks in multi-billion euro infrastructure assets.</p></div><div className="p-8 md:p-10"><p className="text-xs uppercase tracking-[0.15em] text-secondary">Quantitative Exploration</p><p className="mt-4 leading-relaxed text-primary-foreground/70">Actively expanding practical capabilities in coding and machine learning for economic predictions and automated auditing.</p></div></div>
+              <div className="divide-y divide-primary-foreground/20"><div className="p-8 md:p-10"><p className="text-xs uppercase tracking-[0.15em] text-secondary">Mastering Large Engineering Projects</p><p className="mt-4 leading-relaxed text-primary-foreground/70">Focused on structural governance, capital expenditure auditing, and risk management frameworks in multi-billion euro infrastructure assets.</p></div><div className="p-8 md:p-10"><p className="text-xs uppercase tracking-[0.15em] text-secondary">Quantitative Exploration</p><p className="mt-4 leading-relaxed text-primary-foreground/70">Applied coding, statistical modeling, and automated data workflows for economic analysis and empirical auditing.</p></div></div>
             </div>
             <p className="mt-10 max-w-4xl border-l border-accent pl-6 font-display text-2xl italic text-primary-foreground/80">While evaluating complex systems holistically, my core operational focus lies in Finance and Economics—where data, structure, and strategic leverage yield maximum impact.</p>
             <a href={thesisUrl} target="_blank" rel="noreferrer" className="group mt-12 grid gap-6 border-t border-primary-foreground/20 pt-8 transition-colors hover:text-secondary md:grid-cols-[1fr_auto] md:items-end"><div><p className="text-xs uppercase tracking-[0.15em] text-secondary">Bachelor’s Thesis</p><h3 className="mt-3 font-display text-3xl md:text-4xl">Finance through the lens of large-project management</h3><p className="mt-4 max-w-3xl leading-relaxed text-primary-foreground/65">The thesis connects financial judgment with the realities of managing large projects: capital allocation, governance structures, risk exposure, and the long-term decisions that determine whether complex investments create durable value.</p></div><span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em]">Read thesis <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></span></a>
@@ -392,7 +347,7 @@ function Index() {
                   <h3 className="font-display text-2xl md:text-3xl">Basics of Accounting</h3>
                   <ul className="mt-5 max-w-3xl space-y-3">
                     <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65"><span className="font-semibold text-primary-foreground/85">Core Principles:</span> Focuses on fundamental financial concepts, double-entry bookkeeping, and reading basic financial statements.</p></li>
-                    <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65"><span className="font-semibold text-primary-foreground/85">Continuous Growth:</span> I am actively improving my accounting skills and expanding my knowledge of modern financial practices.</p></li>
+                    <li className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-secondary"/><p className="text-sm leading-7 text-primary-foreground/65"><span className="font-semibold text-primary-foreground/85">Applied Practice:</span> Built practical familiarity with financial statement analysis, ledger structure, and modern accounting workflows.</p></li>
                   </ul>
                 </div>
                 <a href={certificateUrl} target="_blank" rel="noreferrer" className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.15em] hover:text-secondary">View certificate <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"/></a>
@@ -467,7 +422,7 @@ function Index() {
             </div>
 
             <h3 className="mt-20 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Personal AI &amp; tech projects</h3>
-            <div className="reveal-scroll mt-8 grid gap-px border border-border bg-border md:grid-cols-3">
+            <div className="reveal-scroll mt-8 grid gap-px border border-border bg-border md:grid-cols-2">
               {aiProjects.map(([heading, detail], i) => <article key={heading} className="bg-background/60 p-6 transition-colors hover:bg-card md:p-8">
                 <p className="font-meta text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</p>
                 <h4 className="mt-3 font-display text-2xl leading-tight">{heading}</h4>
@@ -481,39 +436,155 @@ function Index() {
           </div>
         </section>
 
-        <section id="perspective" className="scroll-mt-20 bg-secondary/45">
-          <div className="mx-auto max-w-[1440px] px-5 py-14 md:px-10 md:py-20"><div className="grid items-center gap-8 lg:grid-cols-[.85fr_1.15fr]"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">06 / Perspective</p><h2 className="mt-4 font-display text-4xl md:text-5xl">Personal Blog &amp; Essays</h2></div><div className="border-t border-primary pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-            <Button type="button" variant="ghost" onClick={() => setDossierOpen(true)} aria-haspopup="dialog" className="dossier-folder group relative block h-auto w-full whitespace-normal overflow-visible border border-border bg-primary/10 p-6 text-left text-foreground shadow-[0_14px_38px_color-mix(in_oklab,var(--primary)_12%,transparent)] hover:bg-primary/15 hover:text-foreground focus-visible:ring-accent md:p-8" data-no-translate>
-              <span aria-hidden="true" className="absolute -top-2 left-8 h-3 w-24 border border-b-0 border-border bg-background/75" />
-              <span aria-hidden="true" className="dossier-stamp absolute right-4 top-4 z-10 -rotate-6 border border-accent px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-accent md:-right-3 md:-top-3 md:px-3 md:py-2 md:text-[10px]">TOP SECRET</span>
-              <span className="block space-y-4 pr-1 pt-4 md:space-y-5 md:pr-4 md:pt-2">
-                {dossierLanguages.map(({ code, title, description, primary }) => <span key={code} className="grid grid-cols-[2.2rem_minmax(0,1fr)] gap-x-3 border-b border-border/70 pb-3 last:border-0 last:pb-0 md:grid-cols-[2.7rem_minmax(0,1fr)] md:gap-x-4">
-                  <span className="pt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-accent">{code}</span>
-                  <span className="min-w-0">
-                    <span lang={code === "ZH" ? "zh-CN" : undefined} className={`block max-w-full whitespace-normal break-words font-display leading-tight ${primary ? "text-2xl md:text-3xl" : "text-lg md:text-xl"}`}>{title}</span>
-                    <span className="mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground">{description}</span>
-                  </span>
-                </span>)}
-              </span>
-              <span className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
-                <span className="font-mono text-[10px] text-muted-foreground">14 steps · EN/VI · interactive map</span>
-                <span className="border-b border-accent pb-1 text-xs font-semibold text-accent">Open the dossier →</span>
-              </span>
-            </Button>
-            <DossierMap />
-            <p className="mt-5 text-xs text-muted-foreground">More essays coming</p>
-          </div></div></div>
-          <Dialog open={dossierOpen} onOpenChange={(open) => { if (!sealingLanguage) setDossierOpen(open); }}>
-            <DialogContent className={`dossier-dialog border-border bg-background p-7 shadow-[0_24px_80px_color-mix(in_oklab,var(--primary)_18%,transparent)] sm:rounded-none md:p-9 ${sealingLanguage ? "dossier-seal-opening" : ""}`} data-no-translate>
-              <span className="dossier-dialog-stamp mx-auto mb-2 w-fit -rotate-6 border border-accent px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">TOP SECRET</span>
-              <DialogTitle className="text-center font-display text-3xl font-normal">Choose your language</DialogTitle>
-              <DialogDescription className="sr-only">Choose English or Vietnamese to open the military supply-chain article.</DialogDescription>
-              <div className="mt-3 grid grid-cols-2 gap-3">
-                <Button type="button" variant="portfolioOutline" disabled={sealingLanguage !== null} onClick={() => { setSealingLanguage("en"); window.setTimeout(() => window.location.assign("/article/military-supply-chain?lang=en"), 400); }} className="h-12 border-accent/50 text-foreground hover:bg-accent hover:text-accent-foreground">English</Button>
-                <Button type="button" variant="portfolioOutline" disabled={sealingLanguage !== null} onClick={() => { setSealingLanguage("vi"); window.setTimeout(() => window.location.assign("/article/military-supply-chain?lang=vi"), 400); }} className="h-12 border-accent/50 text-foreground hover:bg-accent hover:text-accent-foreground">Tiếng Việt</Button>
+        <section id="perspective" className="scroll-mt-20 border-t border-border bg-[#efe9dc] text-[#171412]">
+          <div className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-28">
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#b91c1c]">06 / Digital Publication</p>
+              <a href={project512Url} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 font-meta text-xs uppercase tracking-[0.14em] text-[#171412]/75 transition-colors hover:text-[#b91c1c]">
+                <span>project-512.pages.dev</span>
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
+
+            {/* Broadsheet Newspaper Frame matching Project 512 */}
+            <div className="border border-[#171412]/25 bg-[#f6f1e6] shadow-[0_24px_70px_rgba(23,20,18,0.10)]">
+              {/* Double-ruled Newspaper Masthead */}
+              <div className="border-b-2 border-[#171412] px-5 pt-4 pb-6 md:px-10 md:pt-5 md:pb-8">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-y border-[#171412]/25 py-2 font-meta text-[10px] uppercase tracking-[0.16em] text-[#171412]/70">
+                  <span>VOL. I · ISSUE 512</span>
+                  <span className="hidden sm:inline">INDEPENDENT DIGITAL NEWSPAPER &amp; LITERARY PRESS</span>
+                  <span>HANOI · EST. 2026</span>
+                </div>
+
+                <div className="mt-6 grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+                  <div className="hidden border-y border-[#171412]/20 py-2.5 md:block">
+                    <p className="font-meta text-[10px] uppercase tracking-[0.16em] text-[#171412]/60">Editorial Edition</p>
+                    <p className="mt-1 font-display text-lg italic text-[#171412]/85">Long-Form Essays &amp; Culture</p>
+                  </div>
+
+                  <a href={project512Url} target="_blank" rel="noreferrer" className="group flex flex-col items-center text-center">
+                    <div className="inline-flex items-baseline gap-3">
+                      <span className="font-display text-4xl tracking-tight text-[#171412] sm:text-6xl md:text-7xl">PROJECT</span>
+                      <span className="font-display text-5xl font-normal tracking-tight text-[#b91c1c] transition-transform duration-300 group-hover:scale-105 sm:text-7xl md:text-8xl" data-no-translate>512</span>
+                    </div>
+                    <p className="mt-2 font-meta text-[10px] uppercase tracking-[0.22em] text-[#171412]/65 transition-colors group-hover:text-[#b91c1c]">
+                      Independent Digital Newspaper · Click to Read Online ↗
+                    </p>
+                  </a>
+
+                  <div className="flex items-center justify-between border-y border-[#171412]/20 py-2.5 md:block md:text-right">
+                    <p className="inline-flex items-center gap-2 font-meta text-[10px] font-semibold uppercase tracking-[0.16em] text-[#b91c1c]">
+                      <span className="h-2 w-2 rounded-full bg-[#dc2626]" aria-hidden="true" />
+                      <span>Live Publication</span>
+                    </p>
+                    <p className="font-meta text-[11px] text-[#171412]/75 md:mt-1" data-no-translate>project-512.pages.dev</p>
+                  </div>
+                </div>
               </div>
-            </DialogContent>
-          </Dialog>
+
+              {/* 3-Column Broadsheet Content Spread */}
+              <div className="grid divide-y divide-[#171412]/20 lg:grid-cols-[1.2fr_1fr_.9fr] lg:divide-x lg:divide-y-0">
+                {/* Column 1: Lead Story */}
+                <article className="p-6 md:p-9">
+                  <div className="flex items-center gap-2 font-meta text-[10px] font-semibold uppercase tracking-[0.18em] text-[#b91c1c]">
+                    <Newspaper className="h-3.5 w-3.5" />
+                    <span>Front Page · Editorial Manifesto</span>
+                  </div>
+                  <h2 className="mt-4 font-display text-3xl leading-[1.08] text-[#171412] md:text-4xl">
+                    Slow Journalism &amp; Atmospheric Reading in the Digital Age
+                  </h2>
+                  <p className="mt-4 border-y border-[#171412]/15 py-2 font-meta text-[10px] uppercase tracking-[0.14em] text-[#171412]/65">
+                    By Timothy (Thang) Nghiem · Editor &amp; Publisher
+                  </p>
+                  <p className="mt-5 text-sm leading-7 text-[#171412]/80 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-5xl first-letter:leading-[0.82] first-letter:text-[#b91c1c]">
+                    Project 512 was created as an independent digital newspaper dedicated to thoughtful Vietnamese essays, cultural commentary, and unhurried storytelling. Combining classic print broadsheet hierarchy with bespoke front-end engineering, every piece is crafted as an immersive reading room.
+                  </p>
+                  <p className="mt-4 text-sm leading-7 text-[#171412]/75">
+                    Built and deployed on Cloudflare Pages, the publication pairs expressive editorial typography with interactive reader modules and open community submissions.
+                  </p>
+                  <a href={project512Url} target="_blank" rel="noreferrer" className="group mt-6 inline-flex items-center gap-2 border-b border-[#b91c1c] pb-1 font-meta text-xs font-semibold uppercase tracking-[0.14em] text-[#b91c1c] transition-colors hover:text-[#171412] hover:border-[#171412]">
+                    <span>Read the full edition</span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                </article>
+
+                {/* Column 2: Featured Dispatch & Print Index */}
+                <div className="flex flex-col justify-between p-6 md:p-9">
+                  <div>
+                    <p className="font-meta text-[10px] font-semibold uppercase tracking-[0.18em] text-[#171412]/60">
+                      Featured Dispatch · Published Issue
+                    </p>
+                    <a href={project512Url} target="_blank" rel="noreferrer" className="group mt-4 block border border-[#171412]/20 bg-[#efe8d8] p-5 transition-colors hover:border-[#b91c1c]">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-meta text-[10px] font-semibold uppercase tracking-[0.16em] text-[#b91c1c]">Essay · Memory &amp; Time</span>
+                        <ArrowUpRight className="h-4 w-4 text-[#171412]/60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#b91c1c]" />
+                      </div>
+                      <h3 className="mt-3 font-display text-2xl italic leading-snug text-[#171412] group-hover:text-[#b91c1c]" data-no-translate>
+                        “Sao hồi nhỏ ngày dài..”
+                      </h3>
+                      <p className="mt-3 text-xs leading-6 text-[#171412]/75">
+                        A reflective Vietnamese essay on childhood perception of time, quiet nostalgia, and memory — designed with custom interactive reading layouts and mobile-first editorial pacing.
+                      </p>
+                      <p className="mt-4 font-meta text-[10px] uppercase tracking-[0.15em] text-[#171412] group-hover:text-[#b91c1c]">
+                        Open article on Project 512 →
+                      </p>
+                    </a>
+                  </div>
+
+                  <dl className="mt-6 divide-y divide-[#171412]/15 border-y border-[#171412]/20 text-xs">
+                    <div className="flex items-center justify-between py-2.5">
+                      <dt className="font-meta text-[10px] uppercase tracking-[0.14em] text-[#171412]/60">Medium</dt>
+                      <dd className="font-medium text-[#171412]">Digital Newspaper</dd>
+                    </div>
+                    <div className="flex items-center justify-between py-2.5">
+                      <dt className="font-meta text-[10px] uppercase tracking-[0.14em] text-[#171412]/60">Focus</dt>
+                      <dd className="font-medium text-[#171412]">Essays &amp; Culture</dd>
+                    </div>
+                    <div className="flex items-center justify-between py-2.5">
+                      <dt className="font-meta text-[10px] uppercase tracking-[0.14em] text-[#171412]/60">Language</dt>
+                      <dd className="font-medium text-[#171412]">Vietnamese</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                {/* Column 3: Dark Atmospheric Reading Room Module (Signature 512 Aesthetic) */}
+                <div className="flex flex-col justify-between bg-[#141210] p-6 text-[#f3ede2] md:p-9">
+                  <div>
+                    <div className="flex items-center justify-between border-b border-white/15 pb-3 font-meta text-[10px] uppercase tracking-[0.18em] text-[#e5dfd3]/65">
+                      <span className="inline-flex items-center gap-2">
+                        <span className="h-2 w-2 rounded-full bg-[#dc2626]" aria-hidden="true" />
+                        <span>512 // Reading Room</span>
+                      </span>
+                      <span className="text-[#dc2626]" data-no-translate>NO. 512</span>
+                    </div>
+
+                    <div className="mt-6 flex items-baseline gap-2.5">
+                      <span className="font-display text-5xl leading-none text-[#dc2626]" data-no-translate>512</span>
+                      <span className="font-meta text-[10px] uppercase tracking-[0.18em] text-[#e5dfd3]/60">Editorial Desk</span>
+                    </div>
+
+                    <blockquote className="mt-5 border-l-2 border-[#dc2626] pl-4 font-display text-xl italic leading-relaxed text-[#f6f1e6]">
+                      “Step inside the reading room — explore published Vietnamese essays, atmospheric character modules, and reader story submissions.”
+                    </blockquote>
+
+                    <p className="mt-4 text-xs leading-6 text-[#e5dfd3]/70">
+                      Visit the live publication to browse current issues or contribute your own writing directly through the editorial desk.
+                    </p>
+                  </div>
+
+                  <div className="mt-8 pt-4 border-t border-white/15">
+                    <a href={project512Url} target="_blank" rel="noreferrer" className="group flex w-full items-center justify-between bg-[#b91c1c] px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#991b1b]">
+                      <span>Visit Project 512</span>
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </a>
+                    <a href={project512Url} target="_blank" rel="noreferrer" className="mt-3 block text-center font-meta text-[11px] text-[#e5dfd3]/65 underline decoration-[#dc2626]/60 underline-offset-4 transition-colors hover:text-white" data-no-translate>
+                      https://project-512.pages.dev/
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="mx-auto max-w-[1440px] px-5 py-20 md:px-10 md:py-28"><blockquote className="glass-panel mx-auto max-w-5xl p-8 font-display text-2xl italic leading-relaxed md:p-14 md:text-4xl">“Author&apos;s Note: This digital portal was architected and deployed utilizing state-of-the-art AI systems—reflecting my ongoing commitment to leveraging cutting-edge technology, optimizing operational workflows, and mastering next-generation analytical tools.”</blockquote></section>
@@ -521,7 +592,7 @@ function Index() {
 
       <footer id="contact" className="scroll-mt-20 bg-primary text-primary-foreground">
         <div className="relative h-56 overflow-hidden border-b border-primary-foreground/20 md:h-80"><img src={contactBanner} alt="Abstract financial curves crossing an architectural grid" width={1920} height={768} loading="lazy" className="h-full w-full object-cover"/><div className="absolute inset-0 bg-primary/20"/></div>
-        <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-20 md:px-10 md:pt-28"><p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50">07 / Contact</p><div className="mt-7 grid gap-12 lg:grid-cols-[1.5fr_1fr]"><div><h2 className="font-display text-6xl leading-none md:text-8xl">Let’s discuss the systems behind the numbers.</h2><div className="mt-10 max-w-2xl border-l border-primary-foreground/35 pl-5"><p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">What I’m looking for</p><p className="mt-3 text-base leading-relaxed text-primary-foreground/80">Entry-level and junior roles in business and financial analysis, financial controlling, or data analytics, where reporting, ERP systems, and quantitative work meet real operations.</p><p className="mt-3 text-base leading-relaxed text-primary-foreground/80">Based in Tampere with full work rights in Finland, open to hybrid, remote, or on-site positions nationwide, and available to start immediately.</p></div></div><div className="space-y-4 lg:pt-4"><a href={cvUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm font-semibold hover:text-secondary"><ArrowUpRight className="h-4 w-4"/>Download CV (PDF)</a><a href="mailto:thangnghiem04@gmail.com" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Mail className="h-4 w-4"/>thangnghiem04@gmail.com</a><a href="tel:+358466128746" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Phone className="h-4 w-4"/>+358 466 128 746</a><a href="tel:+840398536417" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Phone className="h-4 w-4"/>+84 039 853 6417</a><a href="https://www.facebook.com/thang.nghiem.00/" target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Facebook className="h-4 w-4"/>Facebook <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={workUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Portfolio folder <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={transcriptUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Academic transcript <ArrowUpRight className="ml-auto h-4 w-4"/></a></div></div><div className="mt-24 flex flex-col justify-between gap-4 border-t border-primary-foreground/20 pt-7 text-xs text-primary-foreground/45 sm:flex-row"><span>© Timothy (Thang) Nghiem. All rights reserved.</span><span>Based in Finland · Working globally</span></div></div>
+        <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-20 md:px-10 md:pt-28"><p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50">07 / Contact</p><div className="mt-7 grid gap-12 lg:grid-cols-[1.5fr_1fr]"><div><h2 className="font-display text-6xl leading-none md:text-8xl">Let’s discuss the systems behind the numbers.</h2><div className="mt-10 max-w-2xl border-l border-primary-foreground/35 pl-5"><p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">What I’m looking for</p><p className="mt-3 text-base leading-relaxed text-primary-foreground/80">Entry-level and junior roles in business and financial analysis, financial controlling, or data analytics, where reporting, ERP systems, and quantitative work meet real operations.</p><p className="mt-3 text-base leading-relaxed text-primary-foreground/80">Based in Hanoi, Vietnam, open to hybrid, remote, or on-site positions globally, and available to start immediately.</p></div></div><div className="space-y-4 lg:pt-4"><a href={cvUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm font-semibold hover:text-secondary"><ArrowUpRight className="h-4 w-4"/>Download CV (PDF)</a><a href="mailto:thangnghiem04@gmail.com" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Mail className="h-4 w-4"/>thangnghiem04@gmail.com</a><a href="tel:+358466128746" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Phone className="h-4 w-4"/>+358 466 128 746</a><a href="tel:+840398536417" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Phone className="h-4 w-4"/>+84 039 853 6417</a><a href="https://www.facebook.com/thang.nghiem.00/" target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary"><Facebook className="h-4 w-4"/>Facebook <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={workUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Portfolio folder <ArrowUpRight className="ml-auto h-4 w-4"/></a><a href={transcriptUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 text-sm hover:text-secondary">Academic transcript <ArrowUpRight className="ml-auto h-4 w-4"/></a></div></div><div className="mt-24 flex flex-col justify-between gap-4 border-t border-primary-foreground/20 pt-7 text-xs text-primary-foreground/45 sm:flex-row"><span>© Timothy (Thang) Nghiem. All rights reserved.</span><span>Based in Hanoi · Working globally</span></div></div>
       </footer>
     </div>
   );

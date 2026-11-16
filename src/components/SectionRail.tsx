@@ -6,7 +6,7 @@ const items: [string, string, string][] = [
   ["03", "capabilities", "Capabilities"],
   ["04", "work", "Selected Work"],
   ["05", "skills", "Skills"],
-  ["06", "perspective", "Perspective"],
+  ["06", "perspective", "Project 512"],
   ["07", "contact", "Contact"],
 ];
 
