@@ -512,21 +512,21 @@ function Index() {
                 <div className="flex flex-col justify-between p-6 md:p-9">
                   <div>
                     <p className="font-meta text-[10px] font-semibold uppercase tracking-[0.18em] text-[#171412]/60">
-                      Featured Dispatch · Published Issue
+                      Featured Dispatch · Interactive Feature
                     </p>
-                    <a href={project512Url} target="_blank" rel="noreferrer" className="group mt-4 block border border-[#171412]/20 bg-[#efe8d8] p-5 transition-colors hover:border-[#b91c1c]">
+                    <a href="/article/military-supply-chain" className="group mt-4 block border border-[#171412]/20 bg-[#efe8d8] p-5 transition-colors hover:border-[#b91c1c]">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="font-meta text-[10px] font-semibold uppercase tracking-[0.16em] text-[#b91c1c]">Essay · Memory &amp; Time</span>
+                        <span className="font-meta text-[10px] font-semibold uppercase tracking-[0.16em] text-[#b91c1c]">Interactive Dossier · Geopolitics</span>
                         <ArrowUpRight className="h-4 w-4 text-[#171412]/60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#b91c1c]" />
                       </div>
-                      <h3 className="mt-3 font-display text-2xl italic leading-snug text-[#171412] group-hover:text-[#b91c1c]" data-no-translate>
-                        “Sao hồi nhỏ ngày dài..”
+                      <h3 className="mt-3 font-display text-2xl italic leading-snug text-[#171412] group-hover:text-[#b91c1c]">
+                        The Military Supply Chain: Who Connects to Whom
                       </h3>
                       <p className="mt-3 text-xs leading-6 text-[#171412]/75">
-                        A reflective Vietnamese essay on childhood perception of time, quiet nostalgia, and memory — designed with custom interactive reading layouts and mobile-first editorial pacing.
+                        An interactive visual dossier on who connects to whom in the global military supply chain — tracing aircraft, tank, money-flow and sanction-chokepoint links between companies across blocs. Available in English and Vietnamese.
                       </p>
                       <p className="mt-4 font-meta text-[10px] uppercase tracking-[0.15em] text-[#171412] group-hover:text-[#b91c1c]">
-                        Open article on Project 512 →
+                        Open the interactive article →
                       </p>
                     </a>
                   </div>
