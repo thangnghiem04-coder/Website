@@ -7,6 +7,7 @@ import { HeroAnimation } from "@/components/HeroAnimation";
 import contactBanner from "@/assets/contact-financial-banner.jpg";
 import { AboutMap } from "@/components/AboutMap";
 import { SectionRail } from "@/components/SectionRail";
+import { ReportsSketch } from "@/components/ReportsSketch";
 
 
 const workUrl = "https://drive.google.com/drive/folders/1YH5NBk6iQbgFOnCuQ5Le84UC7RR0V1jy?usp=drive_link";
@@ -368,10 +369,15 @@ function Index() {
           </div>
           <div className="mx-auto max-w-[1440px] px-5 pb-24 md:px-10 md:pb-36">
             <div className="border-t border-border pt-12 md:pt-16">
-              <a href={advisoryUrl} target="_blank" rel="noreferrer" className="group glass-panel block p-8 md:p-12">
+              <a href={advisoryUrl} target="_blank" rel="noreferrer" className="group glass-panel relative block overflow-hidden p-8 md:p-12">
                 <div className="flex items-start justify-between gap-6"><h4 className="font-display text-2xl leading-snug md:text-3xl">Business Analytics &amp; Strategic Advisory Reports</h4><ArrowUpRight className="mt-1 h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"/></div>
-                <p className="mt-6 max-w-3xl leading-7 text-muted-foreground">A portfolio repository of data-driven case studies, market analytics, and strategic advisory reports. This collection showcases rigorous quantitative analysis, predictive modeling, data visualization, and actionable business intelligence designed to guide executive decision-making and optimize operational performance across diverse industries.</p>
-                <div className="mt-10 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em] text-foreground transition-colors group-hover:text-accent">View reports <ArrowDownRight className="h-4 w-4"/></div>
+                <div className="mt-6 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-14">
+                  <div>
+                    <p className="max-w-3xl leading-7 text-muted-foreground">A portfolio repository of data-driven case studies, market analytics, and strategic advisory reports. This collection showcases rigorous quantitative analysis, predictive modeling, data visualization, and actionable business intelligence designed to guide executive decision-making and optimize operational performance across diverse industries.</p>
+                    <div className="mt-10 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em] text-foreground transition-colors group-hover:text-accent"><span className="relative">View reports<svg viewBox="0 0 120 8" aria-hidden="true" className="pointer-events-none absolute -bottom-2 left-0 h-2 w-full overflow-visible"><path d="M1 5.2C20 3 38 6.4 60 4.2S100 3.4 119 5" pathLength="1" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="[stroke-dasharray:1_2] [stroke-dashoffset:1.02] transition-[stroke-dashoffset] duration-500 ease-out group-hover:[stroke-dashoffset:0] group-focus-visible:[stroke-dashoffset:0] motion-reduce:transition-none"/></svg></span> <ArrowDownRight className="h-4 w-4"/></div>
+                  </div>
+                  <ReportsSketch />
+                </div>
               </a>
             </div>
             <div className="reveal-scroll mt-12 border-t border-border pt-12 md:pt-16">

@@ -54,6 +54,7 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-ink: var(--ink);
   --color-map-neutral: var(--map-neutral);
   --color-map-visited: var(--map-visited);
   --color-map-residence: var(--map-residence);
@@ -101,6 +102,7 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+  --ink: oklch(0.34 0.1 262);
   --map-neutral: oklch(0.68 0.018 68 / 32%);
   --map-visited: oklch(0.49 0.13 246);
   --map-residence: oklch(0.79 0.16 85);
@@ -139,6 +141,7 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+  --ink: oklch(0.72 0.09 255);
   --map-neutral: oklch(0.48 0.018 265 / 35%);
   --map-visited: oklch(0.67 0.15 244);
   --map-residence: oklch(0.82 0.16 87);
@@ -207,3 +210,19 @@
   .dossier-seal-opening, .dossier-seal-opening .dossier-dialog-stamp { animation-duration: .01ms; }
 }
 
+/* Ballpoint sketch in the reports card (see src/components/ReportsSketch.tsx) */
+@keyframes ink-draw { to { stroke-dashoffset: 0; } }
+@keyframes ink-fade { to { opacity: 1; } }
+@keyframes ink-drop { from { opacity: 0; transform: scale(.35); } 60% { opacity: 1; } to { opacity: 1; transform: scale(1); } }
+.ink-sketch .ink-stroke { stroke-dasharray: 1 2; stroke-dashoffset: 1.02; }
+.ink-sketch .ink-trend { stroke-dasharray: 1000 2000; stroke-dashoffset: 1020; }
+.ink-sketch .ink-fade, .ink-sketch .ink-drop { opacity: 0; }
+.ink-sketch .ink-drop { transform-box: fill-box; transform-origin: center; }
+.ink-sketch.is-drawn .ink-stroke { animation: ink-draw var(--ink-dur, .6s) var(--ink-delay, 0ms) cubic-bezier(.45, .1, .35, 1) forwards; }
+.ink-sketch.is-drawn .ink-fade { animation: ink-fade var(--ink-dur, .4s) var(--ink-delay, 0ms) ease-out forwards; }
+.ink-sketch.is-drawn .ink-drop { animation: ink-drop var(--ink-dur, .5s) var(--ink-delay, 0ms) cubic-bezier(.2, .8, .3, 1) forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .ink-sketch .ink-stroke { stroke-dashoffset: 0; animation: none !important; }
+  .ink-sketch .ink-trend { stroke-dasharray: none; stroke-dashoffset: 0; }
+  .ink-sketch .ink-fade, .ink-sketch .ink-drop { opacity: 1; animation: none !important; }
+}
